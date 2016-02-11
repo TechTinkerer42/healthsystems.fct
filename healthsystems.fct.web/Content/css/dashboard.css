@@ -1,0 +1,14 @@
+﻿.form-horizontal .control-label{
+	font-weight: 500;
+}
+
+.registration-form .form-group {
+    margin-bottom: 0;
+}
+
+.narrow-form .form-group {
+    margin-bottom: 0;
+}
+.date-range{
+	width: 12.666667%;
+}

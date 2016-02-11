@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+	<style>$$BootstrapCss$$</style>
+	<style>
+		.blue {
+			background-color: #008751;
+		}
+		.white-text {
+			color: white;
+		}
+		.teal {
+			background-color: #e4e9ef;
+		}
+		.form-horizontal .control-label {
+			text-align:left;
+		}
+        .tiny {
+            width: 2.333333%;
+        }
+        .medium {
+            width: 11.33333333%;
+        }
+        .filler {
+            width: 19.066667%;
+        }
+		.x-col-xs-2 {
+			width: 11.666667%;
+		}
+		.x-col-xs-10 {
+			width: 88.333333%;
+		}
+		.form-label {
+			font-weight: bold;
+		}
+        
+        .row {
+            margin-bottom: 5px;
+        }
+        h4, h5, h6 {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .center {
+            text-align: center;
+        }
+        table thead th {
+            background-color: #008751;
+            color: #fff;
+        }
+        table tbody tr:nth-child(even) {
+            background-color: #ccc;
+        }
+        .last-footer {
+            background-color: #008751;
+            color: #fff;
+            font-weight: bold;
+        }
+        .light-blue {
+            background-color: #ccc ;
+            color: #000;
+            font-weight: bold;
+        }
+		.right {
+			text-align: right;
+		}
+	</style>
+	
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12 center">
+				<h3>
+                    <span>Federal Capital Territory Administration</span><br />
+                    <span>Health &amp; Human Services Secretariat</span>
+                </h3>
+                <h5>
+                  <span>Private Health Establishment Registration &amp; Monitoring Committee (PHERMC)</span><br />
+                  <span>Kapital Street, Block A, Area 11, P.M.B. 24, Garki Abuja - Nigeria</span>
+                </h5>
+            </div>
+        </div>
+        
+    </div>
+    
+    <br />
+        
+    <div class="row">
+        <div class="col-xs-7 center blue white-text">
+                <h1>$$RECEIPT_TITLE$$</h1>
+        </div>
+    </div>
+    
+    <br />
+    
+    <div class="container">
+    
+        <!-- Row start -->
+        <div class="row">
+            
+            <div class="col-xs-3 form-label">
+				PHERMC Reg No.
+            </div>
+			<div class="col-xs-3 teal">
+				$$PHERMC_REG_NO$$
+            </div>
+            
+            <div class="col-xs-3 form-label">
+                CAC Number
+            </div>
+            <div class="col-xs-3 teal">
+                $$CAC_NUMBER$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+                        
+        <!-- Row start -->
+        <div class="row">
+
+            <div class="col-xs-3 form-label">
+				Establishment Name
+            </div>
+			<div class="col-xs-3 teal">
+				$$ESTABLISHMENT_NAME$$
+            </div>
+		
+            <div class="col-xs-3 form-label">
+				Registration Date
+            </div>
+			<div class="col-xs-3 teal">
+				$$REGISTRATION_DATE$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <br />
+        
+        <div class="row">
+            
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Payment Method</th>
+                            <th>Reference</th>
+                            <th>Received From</th>
+							<th>Received By</th>
+                            <th class="right">Amount Paid</th>
+                        </tr>
+                    </thead>
+					
+                    <tbody>$$TBODY_CONTENT$$</tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+							<td></td>
+                        </tr>
+                    <tr class="last-footer">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total Paid Today</td>
+                        <td class="right">$$TOTAL$$</td>
+                    </tr>
+                    <!--
+                    <tr class="light-blue">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total Due:</td>
+                        <td class="right">&#x20a6;$$TOTAL_DUE$$</td>
+                    </tr>
+                    <tr class="light-blue">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total Outstanding:</td>
+                        <td class="right">&#x20a6;$$OUTSTANDING$$</td>
+                    </tr>
+                        -->
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+		
+    </div><!-- /Container -->
+    
+    <script src=""></script>
+    
+</body>
+</html>

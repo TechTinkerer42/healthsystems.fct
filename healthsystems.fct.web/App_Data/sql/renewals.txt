@@ -1,0 +1,18 @@
+﻿SELECT 
+	 Ren.Id AS 'RenewalId'
+	,Reg.CacNumber
+	,Reg.EstablishmentName
+	,Ren.[Date]
+	,Ren.RenewalType_Id AS 'RenewalTypeId'
+	,Ren.Amount - IFNULL(TR.TotalPaid, 0) AS 'AmountDue'
+	,IFNULL(TR.TotalPaid, 0) AS 'TotalPaid'
+	,Ren.Amount - IFNULL(TR.TotalPaid, 0) AS 'Balance'
+FROM Renewal Ren
+LEFT JOIN (
+	SELECT Renewal_Id
+		,COUNT(Renewal_Id)
+		,SUM(Amount) AS 'TotalPaid'
+	FROM [Transaction]
+	GROUP BY Renewal_Id
+	) AS TR ON Ren.Id = TR.Renewal_Id
+JOIN Registration Reg ON Ren.Registration_id = Reg.Id

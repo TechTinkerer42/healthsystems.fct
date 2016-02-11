@@ -1,0 +1,101 @@
+﻿<div class="container">
+    <div class="page-header">
+		<h1>
+            <a ui-sref="dashboard">Dashboard</a> 
+            &gt;
+            <a ui-sref="payments">Payments</a> 
+			&gt;
+			Payment Enquiry
+		</h1>
+    </div>
+
+    <form class="form-horizontal" role="form">
+
+        <!-- Fix Date Fields -->
+        <div class="form-group">
+            <label class="control-label col-sm-3">Date of Payment:</label>
+			<div class="col-sm-5">
+				<div class="input-daterange input-group" id="datepicker">
+					<input type="text" class="input-sm form-control" name="start" data-ng-model="Search.RegistrationDateFrom" placeholder="start date" />
+					<span class="input-group-addon">to</span>
+					<input type="text" class="input-sm form-control" name="end" data-ng-model="Search.RegistrationDateTo" placeholder="end date" />
+				</div>			
+			</div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-3">Payment Method:</label>
+            <div class="col-sm-5">
+                <select class="form-control" placeholder="(Add a payment here)" data-ng-model="Search.PaymentMethod" data-ng-required="AddPayment" formnovalidate="">
+                    <option value="">Both</option>
+                    <option value="1">Cash</option>
+                    <option value="2">Bank Deposit</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-3">Received By (Username):</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" placeholder="Received By (Username)" data-ng-model="Search.ReceivedByName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-3">Establishment Name:</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" placeholder="Establishment Name" data-ng-model="Search.EstablishmentName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-10">
+                <button type="submit" class="btn btn-primary" data-ng-click="search()">Search</button>
+            </div>
+        </div>
+
+    </form>
+
+    <br />
+    <h4>Results:</h4><hr />
+    
+    <div class="datagridx">
+        <table class="table table-hover ">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Establishment Name</th>
+                    <th>Payment Method</th>
+                    <th>Received From</th>
+                    <th>Received By</th>
+                    <th class="right">Amount Paid (₦)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="payment in PaymentSearchResponse">
+                    <th scope="row">{{$index + 1}}</th>
+                    <td>{{payment.Date | moment: 'format': 'DD/MM/YYYY'}}</td>
+                    <td>{{payment.EstablishmentName}}</td>
+                    <td>{{payment.PaymentType}}</td>
+                    <td>{{payment.ReceivedFrom}}</td>
+                    <td>{{payment.ReceivedBy}}</td>
+                    <td class="right">{{payment.Amount | currency:""}}</td>
+                    <td>
+                        <a class="" href="{{API_URL}}/Print/Receipt/{{payment.Id}}" target="_blank"><i class="fa fa-print"></i> Print Copy of Receipt</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="info">
+                    <td colspan="5"></td>
+                    <td><strong>Total:</strong></td>
+                    <td class="right">{{ PaymentSearchResponse | total:'Amount' | currency:""}}</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+        </div>
+
+</div><!-- /.container -->

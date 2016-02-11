@@ -1,0 +1,205 @@
+﻿@{
+    var ts = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+}
+<!doctype html>
+<html lang="en" data-ng-app="fct">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="@Url.Content("~/favicon.ico")" />
+
+    <title>Nigeria Registration - Home</title>
+
+    <link rel="stylesheet" href="@Url.Content("~/bower_components/bootstrap/dist/css/bootstrap.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/dashboard.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/app.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/table-style.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/bower_components/ladda/dist/ladda-themeless.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/bower_components/font-awesome/css/font-awesome.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/bower_components/toastr/toastr.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/bower_components/ag-grid/dist/ag-grid.min.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/bower_components/ag-grid/dist/theme-blue.min.css")"/>
+
+    <script>
+        @{
+            var urlContent = Url.Content("~");
+            var lastSlash = urlContent.LastIndexOf('/');
+            urlContent = (lastSlash > -1) ? urlContent.Substring(0, lastSlash) : urlContent;
+        }
+        var SITE_URL = '@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, @urlContent)';
+        var SITE_SUFFIX = '@urlContent';
+
+    </script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="@Url.Content("~/Content/js/helpers/html5shiv.js")"></script>
+        <script src="@Url.Content( string.Format("~/Content/js/helpers/respond.js?v={0}", ts))"></script>
+    <![endif]-->
+
+
+
+</head>
+<body>
+
+    <nav ng-controller="NavController" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="dashboard">
+                    Nigerian PHERM System {{IsLoggedIn}}
+                    <small>{{StateName}}</small>
+                </a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref="dashboard"><i class="fa fa-home"></i> Home</a></li>
+
+                    <li class="dropdown" ng-show="IsLoggedIn">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-paperclip"></i> Manage <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="registration"><i class="fa fa-file-text-o fa-lg"></i> &nbsp; New Establishment Registration</a></li>
+                            <li><a ui-sref="search"><i class="fa fa-search fa-lg"></i> &nbsp; Search for Registrations</a></li>
+                            <li><a ui-sref="payments"><i class="fa fa-money fa-lg"></i> &nbsp; Payments</a></li>
+                            <li><a ui-sref="masterfiles"><i class="fa fa-wrench fa-lg"></i> &nbsp; Manage masterfiles</a></li>
+                        </ul>
+                    </li>
+
+                    <li ng-show="IsLoggedIn"><a ui-sref="location-map" class="navAuth"><i class="fa fa-globe"></i> Map</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right navAuth">
+                    <li><a href="#" data-toggle="modal" data-target="#myModal"></a></li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user fa-lg"></i> &nbsp; My account <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ui-sref="logout"><i class="fa fa-sign-out fa-lg"></i> &nbsp; Log out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <p>&nbsp;</p>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div ui-view></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container right">
+            <span class="text-muted">
+                Created by
+                <img src="@Url.Content("~/Content/img/exaro.png")" alt="" style="width: 120px;" />
+            </span>
+        </div>
+    </footer>
+
+    <!--Success Modal Templates-->
+    <div id="modal-success" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="glyphicon glyphicon-check"></i>
+                </div>
+                <div class="modal-title">Success</div>
+                <div class="modal-body">Information was saved successfuly</div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" data-dismiss="modal" data-ng-click="successOKButtonClick();">OK</a>
+                </div>
+            </div> <!-- / .modal-content -->
+        </div> <!-- / .modal-dialog -->
+    </div>
+    <!--End Success Modal Templates-->
+
+    <!-- libraries -->
+    <script src="@Url.Content("~/bower_components/jquery/dist/jquery.js")"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/bootstrap/dist/js/bootstrap.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/helpers/ie10-viewport-bug-workaround.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/angular/angular.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/angular-ui-router/release/angular-ui-router.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/ladda/dist/spin.min.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/ladda/dist/ladda.min.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/angular-ladda/dist/angular-ladda.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/angular-resource/angular-resource.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/ag-grid/dist/ag-grid.min.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/bootstrap-validator/dist/validator.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/underscore/underscore.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/moment/moment.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/ngmodel-format/src/ngmodel.format.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/toastr/toastr.js?v={0}", ts))"></script>
+    <script src="//maps.googleapis.com/maps/api/js"></script>
+
+    <!-- app definition and routes -->
+    <script src="@Url.Content(string.Format("~/Content/js/app/app.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/app/routes.js?v={0}", ts))"></script>
+
+    <!-- web token angular code -->
+    <script src="@Url.Content(string.Format("~/Content/js/factories/LocalStorageFactory.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/factories/AuthTokenFactory.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/factories/AuthInterceptorFactory.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/resources/LocationMapResource.js?v={0}", ts))"></script>
+
+    <!-- angular filters -->
+    <script src="@Url.Content(string.Format("~/Content/js/filters/MomentFilter.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/filters/IifFilter.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/filters/TotalFilter.js?v={0}", ts))"></script>
+
+    <!-- angular factories-->
+    <script src="@Url.Content(string.Format("~/Content/js/factories/LoginFactory.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/factories/DashboardFactory.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/factories/RegistrationFactory.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/factories/TransactFactory.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/factories/ApiFactory.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/factories/masterfiles/UserFactory.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/factories/masterfiles/CategoryFactory.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/factories/masterfiles/LocationFactory.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/factories/LocationMapService.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/factories/StringFactory.js?v={0}", ts))"></script>
+
+    <!-- angular controllers -->
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/NavController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/LogoutController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/LoginController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/DashboardController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/RegistrationController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/MasterfileController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/SearchController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/OutstandingController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/EnquiryController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/TransactController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/LocationMapController.js?v={0}", ts))"></script>
+
+    <!-- angular masterfile controllers -->
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/category/CategoryController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/category/CategoryManageController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/costing/CostingController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/costing/CostingManageController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/location/LocationController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/location/LocationManageController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/permission/PermissionController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/permission/PermissionManageController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/role/RoleController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/role/RoleManageController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/service/ServiceController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/service/ServiceManageController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/staffing/StaffingController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/staffing/StaffingManageController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/user/UserController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/user/UserManageController.js?v={0}", ts))"></script>
+
+</body>
+</html>

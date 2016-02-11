@@ -1,0 +1,56 @@
+﻿<div class="container" ng-controller="LocationMapController">
+
+    <div class="page-header">
+        <h1>Find nearby locations</h1>
+    </div>
+
+    <div class="bs-example">
+
+        <form>
+
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <label>First, enter your address below to find that place on the map:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Your location" ng-model="search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" ng-click="searchClick()">Search</button>
+                                <button class="btn btn-default" type="button" ng-click="resetSearch()">Reset</button>
+                            </span>
+                        </div><!-- /input-group -->
+                    </div>
+
+                </div>
+
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <label>Then, select a destination point here for directions:</label>
+                        <select class="form-control" ng-model="selectedMarker" ng-options="item as item.description for item in markers" ng-change="calculateRoute()">
+                            <option value="">Select a Destination</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+        <div class="row">
+            <div class="col-xs-8">
+                <div id="googleMap" style="height: 380px;"></div>
+            </div>
+            <div class="col-xs-4">
+                <div id="right-panel"></div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div><!-- /.container -->

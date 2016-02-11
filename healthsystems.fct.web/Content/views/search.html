@@ -1,0 +1,101 @@
+﻿<div class="container">
+    <div class="page-header">
+        <h1>Registered Establishments</h1>
+    </div>
+
+    <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+		
+            <label class="control-label col-sm-3">Name of Health Establishment:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="Name of Health Establishment" data-ng-model="Search.EstablishmentName">
+            </div>
+			
+			<label class="control-label col-sm-2">Registration Number:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="Registration Number" data-ng-model="Search.PhermcRegistrationNumber">
+            </div>
+			
+        </div>
+	
+        <div class="form-group">
+		
+            <label class="control-label col-sm-3">CAC Number:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="CAC Number" data-ng-model="Search.CacNumber">
+            </div>
+			
+            <label class="control-label col-sm-2">Location:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="Location" data-ng-model="Search.Location">
+            </div>
+			
+        </div>
+		
+        <div class="form-group">
+		
+            <label class="control-label col-sm-3">Date Registered:</label>
+			<div class="col-sm-3">
+				<div class="input-daterange input-group" id="datepicker">
+					<input type="text" class="input-sm form-control" name="start" data-ng-model="Search.RegistrationDateFrom" placeholder="start date" />
+					<span class="input-group-addon">to</span>
+					<input type="text" class="input-sm form-control" name="end" data-ng-model="Search.RegistrationDateTo" placeholder="end date" />
+				</div>			
+			</div>
+
+			
+        </div>
+		
+        <div class="form-group hidden">
+		
+            <label class="control-label col-sm-3">Last Renewal Date:</label>
+			<div class="col-sm-3">
+				<div class="input-daterange input-group" id="datepicker">
+					<input type="text" class="input-sm form-control" name="start" data-ng-model="Search.LastRenewalDateFrom" placeholder="start date" />
+					<span class="input-group-addon">to</span>
+					<input type="text" class="input-sm form-control" name="end" data-ng-model="Search.LastRenewalDateTo" placeholder="end date" />
+				</div>			
+			</div>
+			
+        </div>
+        
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-10">
+                <button type="submit" class="btn btn-primary" ladda="IsSearching" data-ng-click="search()" data-style="expand-left">Search</button>
+            </div>
+        </div>
+
+    </form>
+
+    <br />
+    <h4>Results:</h4><hr />
+
+    <table class="table table-bordered table-hover ">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name of Establishment</th>
+                <th>Registration Number</th>
+                <th>CAC Number</th>
+				<th>Location</th>
+				<th>Date Registered</th>
+				<!--<th>Last Renewal Date</th>-->
+				<th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="registration in RegistrationSearchResponse">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{registration.EstablishmentName}}</td>
+                <td>{{registration.PhermcRegistrationNumber}}</td>
+                <td>{{registration.CacNumber}}</td>
+				<td>{{registration.Location.Name}}</td>
+				<td>{{registration.RegistrationDate | moment: 'format': 'DD/MM/YYYY'}} </td>
+				<!--<td>{{registration.LastRenewalDate == "/Date(-62135596800000)/" | iif : "" : (registration.LastRenewalDate | moment: 'format': 'DD/MM/YYYY')}}</td>-->
+                <td><a ui-sref="registration-edit({ id: registration.Id })"><i class="fa fa-edit"></i> Edit</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div><!-- /.container -->

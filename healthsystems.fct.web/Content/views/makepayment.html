@@ -1,0 +1,72 @@
+﻿<div class="container">
+    <div class="page-header">
+		<h1>
+			<a ui-sref="dashboard">Dashboard</a> 
+			&gt;
+			<a ui-sref="payments">Payments</a> 
+			&gt;
+			Make Payment
+		</h1>
+    </div>
+
+    <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+            <label class="control-label col-sm-3">Establishment Name:</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" placeholder="Establishment Name" data-ng-model="Search.EstablishmentName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-10">
+                <button type="submit" class="btn btn-primary" data-ng-click="search()">Search</button>
+            </div>
+        </div>
+
+    </form>
+
+    <br />
+    <h4>Results:</h4><hr />
+
+    <div ag-grid="gridOptions" class="ag-blue" style="height: 100%;"></div>
+
+    <table class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Receipt #</th>
+                <th>Establishment Name</th>
+				<th class="right">Amount Due (₦)</th>
+                <th class="right">Amount Paid (₦)</th>
+                <th class="right">Balance (₦)</th>
+				<th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="item in OutstandingSearchResponse">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{item.Date | moment: 'format': 'DD/MM/YYYY'}}</td>
+                <td>{{item.RenewalId}}</td>
+                <td>{{item.EstablishmentName}}</td>
+                <td class="right">{{item.AmountDue | currency:""}}</td>
+                <td class="right">{{item.TotalPaid | currency:""}}</td>
+                <td class="right">{{item.Balance | currency:""}}</td>
+                <td>
+                    <a class="" ui-sref="transact({ id: item.RenewalId })" ng-show="item.Balance > 0"><i class="fa fa-money"></i> Make Payment</a>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="info">
+                <td class="right" colspan="4"><strong>Total:</strong></td>
+                <td class="right">{{ OutstandingSearchResponse | total:'AmountDue' | currency:""}}</td>
+                <td class="right">{{ OutstandingSearchResponse | total:'TotalPaid' | currency:""}}</td>
+                <td class="right">{{ OutstandingSearchResponse | total:'Balance' | currency:""}}</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div><!-- /.container -->

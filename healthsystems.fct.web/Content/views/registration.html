@@ -1,0 +1,551 @@
+﻿<div class="container">
+	<div class="col-sm-8"> 
+		<div class="page-header">
+			<span class="h1">Registration
+				<span class="small">of Health Establishment</span>
+				{{Registration.Renewal}}
+
+				<span ng-show="New">
+					<span ng-hide="Registration.Renewal" class="label label-success">New</span>
+				</span>
+				<span ng-hide="New">
+				    <span ng-hide="Registration.Renewal && New" class="label label-primary">Edit</span>
+				</span>
+				<span ng-cloak="" ng-show="Registration.Renewal" class="label label-info">Renewal</span>
+
+
+			</span>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="page-header">
+			
+			<span class="h1">&nbsp;</span>
+			
+			<!-- Save button -->
+			<button type="submit" id="submitButton" class="btn btn-primary" ng-click="submitButtonClick();" ladda="IsSaving" data-style="expand-left">
+				<i class="fa fa-save"></i> Save <span ng-show="New">Registration</span>
+			</button>
+			<!-- Print button -->
+		    <div class="btn-group">
+		        <button type="button" class="btn btn-primary dropdown-toggle {{allowPrint == false ? 'disabled' : ''}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		            <i class="fa fa-print"></i> Print <span class="caret"></span>
+		        </button>
+		        <ul class="dropdown-menu">
+		            <li><a target="_blank" href="{{API_URL}}/Print/Registration/{{Registration.Id}}">Print Registration form</a></li>
+		        </ul>
+		    </div>
+            <!-- Renewal button -->
+            <button ng-cloak="" ng-show="Registration.Renewal" type="submit" ng-class="{true: 'btn btn-primary', false: 'btn btn-danger'}[!Registration.Renewal]" ng-click="Registration.Renewal = !Registration.Renewal">
+                <i class="fa fa-recycle"></i> {{!Registration.Renewal && 'Do Renewal' || 'Cancel Renewal'}}
+            </button>
+		
+		</div>
+
+	</div>
+	
+    <div class="col-sm-12">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+            	<a href="#section-a" class="tab-btn" aria-controls="section-a" role="tab" data-toggle="tab" data-description="A. Personal Profile">
+            	A. Personal Profile
+            	</a>
+            </li>
+            <li role="presentation">
+            	<a href="#section-b" class="tab-btn" aria-controls="section-b" role="tab" data-toggle="tab" data-description="B. Professional Body">
+            	B. Professional Body
+            	</a>
+            </li>
+        </ul>
+
+        <form id="myForm" role="form" class="registration-form">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active fade in" id="section-a">
+                    <!-- Tab content -->
+                    <p>&nbsp;</p>
+                    <div class="form-horizontal">
+
+                        <h4>Main details:</h4>
+                        <hr />
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3">PHERMC registration number:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="PHERMC number" data-ng-model="Registration.PhermcRegistrationNumber" data-toggle="tooltip" data-placement="top" title="This field will be auto-generated on save" readonly="" />
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                            <div class="form-group col-sm-1"></div>
+
+                            <label class="control-label col-sm-2">Last Renewal date:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Last Renewal date" data-ng-model="Registration.LastRenewalDate" readonly="" />
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3">CAC number:<i class="red">*</i></label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" data-type="number" class="form-control" placeholder="CAC Registration Number" data-ng-model="Registration.CacNumber" required />
+                                <p class="help-block with-errors"></p>
+                            </div>
+                            <div class="form-group col-sm-1"></div>
+                            <label class="control-label col-sm-2">Registration Date:<i class="red">*</i></label>
+                            <div class="form-group has-feedback col-sm-3">
+                                <input type="text" class="form-control" placeholder="Registration Date" data-ng-model="Registration.RegistrationDate" data-date-format="dd/mm/yyyy" data-provide="datepicker" required>
+                                <i class="fa fa-calendar form-control-feedback"></i>
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+                        <h4>Proprietor details:</h4>
+                        <hr />
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3">Name:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Name" data-ng-model="Registration.ProprietorFirstName" required>
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                            <div class="form-group col-sm-1"></div>
+
+                            <label class="control-label col-sm-2">Surname:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Surname" data-ng-model="Registration.ProprietorLastName" required>
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3">Gender:<i class="red">*</i></label>
+                            <div class="form-group col-sm-3">
+                                <select class="form-control" data-ng-model="Registration.ProprietorGender" required>
+                                    <option value=""></option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                            <div class="form-group col-sm-1"></div>
+
+                            <label class="control-label col-sm-2">NIN number:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" data-type="number" class="form-control" placeholder="NIN number" data-ng-model="Registration.ProprietorNinNumber">
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3">Is Director?</label>
+                            <div class="form-group col-sm-3">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox1" value="option1" name="Trauma" data-ng-model="Registration.ProprietorIsMedicalDirector"> &nbsp;
+                                </label>
+                            </div>
+
+                            <div class="form-group col-sm-1"></div>
+
+                            <label class="control-label col-sm-2">Mobile 1:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" data-type="number" data-minlength="11" maxlength="11" data-error="Must be eleven numbers long" class="form-control" placeholder="Mobile 1" data-ng-model="Registration.ProprietorMobile1">
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3">Mobile 2:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" data-type="number" data-minlength="11" maxlength="11" data-error="Must be eleven numbers long" class="form-control" placeholder="Mobile 2" data-ng-model="Registration.ProprietorMobile2">
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                            <div class="form-group col-sm-1"></div>
+
+                            <label class="control-label col-sm-2">Email:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="email" class="form-control" placeholder="Email" data-ng-model="Registration.ProprietorEmailAddress">
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+                        <div ng-hide="Registration.ProprietorIsMedicalDirector">
+                            <h4>Director details:</h4>
+                            <hr />
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-3">Name:</label>
+                                <div class="form-group col-sm-3">
+                                    <input type="text" class="form-control" placeholder="Name" data-ng-model="Registration.MedicalDirectorFirstName">
+                                    <p class="help-block with-errors"></p>
+                                </div>
+
+                                <div class="form-group col-sm-1"></div>
+
+                                <label class="control-label col-sm-2">Surname:</label>
+                                <div class="form-group col-sm-3">
+                                    <input type="text" class="form-control" placeholder="Surname" data-ng-model="Registration.MedicalDirectorLastName">
+                                    <p class="help-block with-errors"></p>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-3">Gender:<i class="red">*</i></label>
+                                <div class="form-group col-sm-3">
+                                    <select class="form-control" data-ng-model="Registration.MedicalDirectorGender">
+                                        <option value=""></option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                    <p class="help-block with-errors"></p>
+                                </div>
+
+                                <div class="form-group col-sm-1"></div>
+
+                                <label class="control-label col-sm-2">NIN number:</label>
+                                <div class="form-group col-sm-3">
+                                    <input type="text" class="form-control" placeholder="NIN number" data-ng-model="Registration.MedicalDirectorNinNumber">
+                                    <p class="help-block with-errors"></p>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-3">Mobile 1:</label>
+                                <div class="form-group col-sm-3">
+                                    <input type="text" data-type="number" data-minlength="11" maxlength="11" data-error="Must be eleven numbers long" class="form-control" placeholder="Mobile 1" data-ng-model="Registration.MedicalDirectorMobile1">
+                                    <p class="help-block with-errors"></p>
+                                </div>
+
+                                <div class="form-group col-sm-1"></div>
+
+                                <label class="control-label col-sm-2">Mobile 2:</label>
+                                <div class="form-group col-sm-3">
+                                    <input type="text" data-type="number" data-minlength="11" maxlength="11" data-error="Must be eleven numbers long" class="form-control" placeholder="Mobile 2" data-ng-model="Registration.MedicalDirectorMobile2">
+                                    <p class="help-block with-errors"></p>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-3">Email:</label>
+                                <div class="form-group col-sm-3">
+                                    <input type="text" class="form-control" placeholder="Email" data-ng-model="Registration.MedicalDirectorEmailAddress">
+                                    <p class="help-block with-errors"></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <h4>Establishment details:</h4>
+                        <hr />
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Name of the establishment:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Name of the establishment" data-ng-model="Registration.EstablishmentName" required>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Type of establishment:</label>
+                            <div class="form-group col-sm-3">
+                                <select class="form-control" data-ng-model="Registration.EstablishmentType" required>
+                                    <option value=""></option>
+                                    <option value="Hospital">Hospital</option>
+                                    <option value="Clinic">Clinic</option>
+                                    <option value="Laboratory">Laboratory</option>
+                                    <option value="Maternity">Maternity</option>
+                                    <option value="Physiotherapy">Physiotherapy</option>
+                                    <option value="Radiodiagnostic">Radiodiagnostic</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3">No of Beds:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" data-type="number" class="form-control" placeholder="No of Beds" data-ng-model="Registration.NoOfBeds">
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3">&nbsp;</label>
+                            <div class="form-group col-sm-3">
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3">Address:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Address Line 1" data-ng-model="Registration.AddressLine1">
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3"></label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Address Line 2" data-ng-model="Registration.AddressLine2">
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3"></label>
+                            <div class="form-group col-sm-3">
+                                <select class="form-control" ng-model="Registration.Location.Id" ng-options="item.Id as item.Name for item in stateLocations" required>
+                                    <option value="">Select a Location</option>
+                                </select>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3"></label>
+                            <div class="form-group col-sm-3">
+                                <select class="form-control" ng-model="Registration.Category.Id" ng-options="item.Id as item.Name for item in categories" required>
+                                    <option value="">Select a Category</option>
+                                </select>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3"></label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Land Mark" data-ng-model="Registration.LandMark">
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm-6">
+
+                                <h4>Numbers of Staff:</h4>
+                                <hr />
+
+                                <div class="form-group" ng-repeat="registrationStaffing in Registration.RegistrationStaffing">
+                                    <label class="control-label col-sm-6">{{registrationStaffing.Staffing.Name}}</label>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" data-type="number" class="form-control" data-ng-model="registrationStaffing.NumberOfStaff">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-6">
+
+                                <h4>Services:</h4>
+                                <hr />
+
+                                <div class="form-group" ng-repeat="registrationService in Registration.RegistrationServices">
+
+                                    <label class="control-label col-sm-6">{{registrationService.Service.Name}}</label>
+                                    <div class="form-group col-sm-6">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" data-ng-model="registrationService.Selected"> &nbsp;
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <br />
+
+                        <h4>Administrator details:</h4>
+                        <hr />
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3">Name:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Name" data-ng-model="Registration.AdministratorFirstName">
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                            <label class="control-label col-sm-3">Surname:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Surname" data-ng-model="Registration.AdministratorLastName">
+                                <p class="help-block with-errors"></p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Mobile 1:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" data-type="number" data-minlength="11" maxlength="11" data-error="Must be eleven numbers long" class="form-control" placeholder="Mobile 1" data-ng-model="Registration.AdministratorMobile1">
+                                <p class="help-block with-errors"></p>
+                            </div>
+                            <label class="control-label col-sm-3">Mobile 2:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" data-type="number" data-minlength="11" maxlength="11" data-error="Must be eleven numbers long" class="form-control" placeholder="Mobile 2" data-ng-model="Registration.AdministratorMobile2">
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /Tab content -->
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="section-b">
+
+                    <p>&nbsp;</p>
+                    <div class="form-horizontal" role="form">
+
+                        <h4>Professional body details:</h4><hr />
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">Attendance to Continuous Professional Development:</label>
+                            <div class="form-group col-sm-5">
+
+                                <select class="form-control" data-ng-model="Registration.ProfessionalBodyAttendance" required>
+                                    <option value=""></option>
+                                    <option value="20 Units">20 Units</option>
+                                    <option value="Less than 20 Units">Less than 20 Units</option>
+                                    <option value="Not at all">Not at all</option>
+                                </select>
+
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">Involvment in Professional Body Activities:</label>
+                            <div class="form-group col-sm-5">
+
+                                <select class="form-control" data-ng-model="Registration.ProfessionalBodyInvolvement" required>
+                                    <option value=""></option>
+                                    <option value="Regular">Regular</option>
+                                    <option value="Irregular">Irregular</option>
+                                    <option value="Not Involved">Not Involved</option>
+                                </select>
+
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">Remarks by head of Professional Body:</label>
+                            <div class="form-group col-sm-5">
+                                <textarea class="form-control" rows="4" data-ng-model="Registration.ProfessionalBodyRemarks"></textarea>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">Name:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Name" data-ng-model="Registration.ProfessionalBodyFirstName" required>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">Surname:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Surname" data-ng-model="Registration.ProfessionalBodyLastName" required>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">Position:</label>
+                            <div class="form-group col-sm-3">
+                                <input type="text" class="form-control" placeholder="Position" data-ng-model="Registration.ProfessionalBodyPosition" required>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+
+                        <h4>Acceptance details:</h4><hr />
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">Applicant Accepted:</label>
+                            <div class="form-group col-sm-5">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" data-ng-model="Registration.AcceptanceDetailsAccepted"> &nbsp;
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-hide="Registration.AcceptanceDetailsAccepted">
+                            <label class="control-label col-sm-5">Reason for Non Acceptance:</label>
+                            <div class="form-group col-sm-5">
+                                <textarea class="form-control" rows="4" data-ng-model="Registration.AcceptanceDetailsReason"></textarea>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+		
+    </div>
+	
+ <!--Success Modal Templates-->
+    <div id="modal-success" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="glyphicon glyphicon-check"></i>
+                </div>
+                <div class="modal-title">Success</div>
+                <div class="modal-body">Registration information was saved successfuly</div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" data-dismiss="modal" data-ng-click="successOKButtonClick();">OK</a>
+                </div>
+            </div> <!-- / .modal-content -->
+        </div> <!-- / .modal-dialog -->
+    </div>
+    <!--End Success Modal Templates-->
+
+</div><!-- /.container -->

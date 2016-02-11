@@ -1,0 +1,133 @@
+﻿<div class="container">
+    <div class="page-header">
+		<h1>
+			<a ui-sref="dashboard">Dashboard</a> 
+			&gt;
+			<a ui-sref="payments">Payments</a> 
+			&gt;
+			<a ui-sref="makepayment">Make Payment</a> 
+			&gt;
+			Transaction
+		</h1>
+    </div>
+
+                <form id="myForm" class="form-horizontal narrow-form" role="form" data-toggle="validator" novalidate="true">
+		
+                    <div>
+		
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">CAC Registration Number:</label>
+                            <div class="form-group col-sm-5">
+                                <input type="text" class="form-control" placeholder="CAC Registration Number" data-ng-model="Renewal.CacNumber" readonly>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+			
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">Name of the Health Establishment:</label>
+                            <div class="form-group col-sm-5">
+                                <input type="text" class="form-control" placeholder="Name of the Health Establishment" data-ng-model="Renewal.EstablishmentName" readonly>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+						
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">Amount Due (&#8358;):</label>
+                            <div class="form-group col-sm-5">
+                                <input type="text" class="form-control left" placeholder="Amount Due" data-ng-model="Renewal.AmountDue" model-format="currency" readonly  >
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+							<label for="inputfield2" class="col-sm-5 control-label">Total Paid (&#8358;):</label>
+                            <div class="form-group col-sm-5">
+                                <input type="text" class="form-control left" placeholder="Total Paid" data-ng-model="Renewal.TotalPaid" model-format="currency" readonly />
+                                <p class="help-block with-errors"></p>
+                            </div>
+						</div>
+						
+						<div ng-cloak ng-hide="HidePaymentSection">
+						
+							<div class="form-group">
+								<label class="control-label col-sm-5">Outstanding Amount (&#8358;):</label>
+								<div class="form-group col-sm-5">
+									<input type="text" class="form-control left" placeholder="Outstanding Amount" data-ng-model="Renewal.Balance" readonly model-format="currency" />
+									<p class="help-block with-errors"></p>
+								</div>
+							</div>
+
+						
+							<div class="form-group">
+								<label class="control-label col-sm-5">Payment Method:</label>
+								<div class="form-group col-sm-5">
+									<select class="form-control" placeholder="(Add a payment here)" data-ng-model="Payment.PaymentMethodId" required="">
+										<option value="" selected></option>
+										<option value="1">Cash</option>
+										<option value="2">Bank Deposit</option>
+									</select>
+									<p class="help-block with-errors"></p>
+								</div>
+							</div>
+				
+							<div class="form-group" data-ng-show="Payment.PaymentMethodId == 2">
+								<label class="control-label col-sm-5">Reference Number:</label>
+								<div class="form-group col-sm-5">
+									<input type="text" class="form-control" placeholder="Reference Number" data-ng-model="Payment.ReferenceNumber" data-ng-required="Payment.PaymentMethodId == 2">
+									<p class="help-block with-errors"></p>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-5">Amount Paid (₦):</label>
+								<div class="form-group col-sm-5">
+									<input type="text" data-type="number" class="form-control left" placeholder="Amount Paid" data-ng-model="Payment.AmountPaid" data-ng-required="AddPayment" model-format="currency" required />
+									<p class="help-block with-errors amount-paid red">{{AmountPaidZeroMessage}}</p>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-5">Received from:</label>
+								<div class="form-group col-sm-5">
+									<input type="text" class="form-control" placeholder="Received from" data-ng-model="Payment.ReceivedFrom" required >
+									<p class="help-block with-errors"></p>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-5"></label>
+								<div class="form-group col-sm-5">
+									<button type="submit" class="btn btn-success"><i class="fa fa-check-circle-o"></i> Pay Now</button>
+								</div>
+							</div>
+							
+						</div>
+						<div class="center" ng-cloak ng-show="HidePaymentSection">
+						    <h3 class="green">All Dues Paid! Nothing is outstanding!</h3>
+
+
+
+						</div>
+
+                    </div><!-- /addPayment -->
+                   
+                </form>
+				
+ <!--Success Modal Templates-->
+    <div id="modal-transaction-success" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="glyphicon glyphicon-check"></i>
+                </div>
+                <div class="modal-title">Success</div>
+                <div class="modal-body">Payment information was saved successfuly</div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" data-dismiss="modal" data-ng-click="successOKButtonClick();">OK</a>
+                </div>
+            </div> <!-- / .modal-content -->
+        </div> <!-- / .modal-dialog -->
+    </div>
+    <!--End Success Modal Templates-->
+				
+	</div>

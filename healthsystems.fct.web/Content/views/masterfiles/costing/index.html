@@ -1,0 +1,41 @@
+﻿<div class="container">
+    <div class="page-header">
+        <h1>
+            <a ui-sref="masterfiles">Masterfiles</a>
+            &gt;
+            Costing
+        </h1>
+    </div>
+   
+
+	<a class="btn btn-success" ui-sref="costing-create">
+		<i class="fa fa-plus"></i>
+		Add Costing
+	</a>
+
+    <p>&nbsp;</p>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Category Name</th>
+                <th class="right">Registration Cost</th>
+                <th class="right">Renewal Cost</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="item in dataList">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{item.Category.Name}}</td>
+                <td class="right">{{item.RegistrationCost | currency:''}}</td>
+                <td class="right">{{item.RenewalCost | currency:''}}</td>
+                <td>
+                    <a class="" ui-sref="costing-edit({id: item.Id})"><i class="glyphicon glyphicon-indent-left"></i> Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div><!-- /.container -->

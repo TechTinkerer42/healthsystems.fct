@@ -1,0 +1,90 @@
+﻿<div class="container">
+    <div class="col-sm-8"> 
+        <div class="page-header">
+            <h1>
+                <a ui-sref="masterfiles">Masterfiles</a>
+				&gt;
+				<a ui-sref="role">Role</a>
+				&gt;
+				<span data-ng-cloak="">{{action}}</span>
+            </h1>
+        </div>
+    </div>
+    <div class="col-sm-4 pull-right">
+        <div class="page-header">
+			
+            <span class="h1">&nbsp;</span>
+			
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <!-- Save button -->
+            <a class="btn btn-default" ui-sref="role">
+                <i class="fa fa-save"></i> Go Back
+            </a>
+            
+            <button type="submit" class="btn btn-primary" data-ng-click="save()">
+                <i class="fa fa-save"></i> Save Details
+            </button>
+		
+        </div>
+
+    </div>
+
+    <div class="col-sm-12">
+        <form class="form-horizontal">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Name:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-ng-model="model.Name" required="" />
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Description:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-ng-model="model.Description" />
+                </div>
+            </div>
+
+			<h4>Permissions</h4>
+			<hr />
+			
+			<div class="form-group col-sm-3">
+				<select class="form-control" ng-model="selectedPermission" ng-options="item.Id as item.Name for item in permissions">
+					<option value="">Select a permission</option>
+				</select>
+			</div>
+			&nbsp;
+            <button class="btn btn-success" data-ng-click="addPermission()">
+                <i class="fa fa-plus"></i> Add Permission
+            </button>
+			
+			<table class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>Permission Index</th>
+						<th>Permission Name</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="permission in rolePermissions">
+						<td>{{$index}}</td>
+						<td>{{permission.Permission.Name}}</td>
+						<td>
+							<button class="btn btn-default" ng-click="removePermission(rolePermissions, $index)">
+								Remove
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+        </form>        
+    </div>
+
+
+
+</div><!-- /.container -->

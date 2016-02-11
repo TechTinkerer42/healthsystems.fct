@@ -1,0 +1,152 @@
+﻿<div class="container">
+<div class="col-sm-8">
+        <div class="page-header">
+            <h1>
+                <a ui-sref="masterfiles">Masterfiles</a>
+				&gt;
+				<a ui-sref="user">Users</a>
+				&gt;
+				<span data-ng-cloak="">{{action}}</span>
+            </h1>
+        </div>
+    </div>
+    <div class="col-sm-4 pull-right">
+        <div class="page-header">
+
+            <span class="h1">&nbsp;</span>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <a class="btn btn-default" ui-sref="user">
+                <i class="fa fa-save"></i> Go Back
+            </a>
+
+            <button type="submit" class="btn btn-primary" data-ng-click="save();">
+                <i class="fa fa-save"></i> Save Details
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-12">
+        <form class="form-horizontal">
+		
+			<h4>User Details</h4>
+			<hr />
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+		                <label class="col-sm-4 control-label">Username:</label>
+		                <div class="col-sm-6">
+		                    <input type="text" class="form-control" data-ng-model="model.Username" ng-disabled="model.Id > 0" required="" />
+		                    <p class="help-block with-errors"></p>
+		                </div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+		                <label class="col-sm-4 control-label">Password:</label>
+		                <div class="col-sm-6">
+		                    <input type="password" class="form-control" data-ng-model="model.Password" required="" />
+		                    <p class="help-block with-errors"></p>
+		                </div>
+					</div>
+				</div>
+			</div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">First Name:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-ng-model="model.FirstName" required="" />
+                    <p class="help-block with-errors"></p>
+                </div>
+
+                <label class="col-sm-3 control-label">Last Name:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-ng-model="model.LastName" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Email Address:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-ng-model="model.EmailAddress" />
+                </div>
+
+                <label class="col-sm-3 control-label">Mobile Number:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-ng-model="model.Mobile" />
+                </div>
+            </div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+		                <label class="col-sm-4 control-label">Active?</label>
+		                <div class="col-sm-1">
+		                    <input type="checkbox" class="form-control" data-ng-model="model.Active" />
+		                    <p class="help-block with-errors"></p>
+		                </div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+				</div>
+			</div>
+			
+			<h4>Roles</h4>
+			<hr />
+			
+			<div class="form-group col-sm-3">
+				<select class="form-control" ng-model="selectedRole" ng-options="item.Id as item.Name for item in roles">
+					<option value="">Select a role</option>
+				</select>
+			</div>
+			&nbsp;
+            <button class="btn btn-success" data-ng-click="addRole()">
+                <i class="fa fa-plus"></i> Add Role
+            </button>
+			
+			<table class="table table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>Role Index</th>
+						<th>Role Name</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="role in model.Roles">
+						<td>{{$index}}</td>
+						<td>{{role.Name}}</td>
+						<td>
+							<button class="btn btn-default" ng-click="removeRole(model.Roles, $index)">
+								Remove
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+        </form>
+    </div>
+
+ <!--Success Modal Templates-->
+    <div id="modal-success" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="glyphicon glyphicon-check"></i>
+                </div>
+                <div class="modal-title">Success</div>
+                <div class="modal-body">Information was saved successfuly</div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" data-dismiss="modal" data-ng-click="successOKButtonClick();">OK</a>
+                </div>
+            </div> <!-- / .modal-content -->
+        </div> <!-- / .modal-dialog -->
+    </div>
+    <!--End Success Modal Templates-->
+
+</div><!-- /.container -->

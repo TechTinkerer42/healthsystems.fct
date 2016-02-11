@@ -1,0 +1,30 @@
+﻿SELECT [Transaction].[Id]
+		,[Transaction].[ReceivedFrom]
+		,[Transaction].[Date]
+		,[Transaction].[Amount]
+		,[PaymentType].Name AS 'PaymentType'
+		,TransactionType.Name AS 'TransactionType'
+		,[Renewal_id]
+		,User.Username
+		,R.EstablishmentName
+	FROM [Transaction]
+	join
+		[PaymentType]
+	on
+		[Transaction].PaymentType_id = [PaymentType].Id
+	join
+		User
+	on
+		User.Id = [Transaction].ReceivedBy_id
+	join
+		Renewal
+	on
+		Renewal.Id = [Transaction].Renewal_id
+	join
+		Registration R
+	on
+		R.Id = Renewal.Registration_id
+	join
+		TransactionType
+	on
+		TransactionType.Id = [Transaction].TransactionType_id

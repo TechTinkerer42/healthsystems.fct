@@ -1,0 +1,675 @@
+<!doctype html>
+<html>
+<head>
+	<style>$$BootstrapCss$$</style>
+	<style>
+		.blue {
+			background-color: #008751;
+		}
+		.white-text {
+			color: white;
+		}
+		.teal {
+			background-color: #e4e9ef;
+		}
+		.form-horizontal .control-label {
+			text-align:left;
+		}
+        .tiny {
+            width: 2.333333%;
+        }
+        .medium {
+            width: 11.33333333%;
+        }
+        .filler {
+            width: 19.066667%;
+        }
+		.x-col-xs-2 {
+			width: 11.666667%;
+		}
+		.x-col-xs-10 {
+			width: 88.333333%;
+		}
+		.form-label {
+			font-weight: bold;
+		}
+        
+        .row {
+            margin-bottom: 5px;
+        }
+        h4, h5, h6 {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .center {
+            text-align: center;
+        }
+        .ballot {
+            font-weight: bold;
+            padding-left: 7px;
+        }
+	</style>
+	
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12 center">
+				<h3>
+                    <span>Federal Capital Territory Administration</span><br />
+                    <span>Health &amp; Human Services Secretariat</span>
+                </h3>
+                <h5>
+                  <span>Private Health Establishment Registration &amp; Monitoring Committee (PHERMC)</span><br />
+                  <span>Kapital Street, Block A, Area 11, P.M.B. 24, Garki Abuja - Nigeria</span>
+                </h5>
+            </div>
+        </div>
+        
+    </div>
+    
+    <br />
+        
+    <div class="row">
+        <div class="col-xs-5 center blue white-text">
+                <h1>REGISTRATION</h1>
+        </div>
+    </div>
+    
+    <br />
+    
+    <div class="container">
+    
+        <!-- Row start -->
+        <div class="row">
+            
+            <div class="col-xs-2 form-label">
+				PHERMC Reg No.
+            </div>
+			<div class="col-xs-4 teal">
+				$$PHERMC_REG_NO$$
+            </div>
+            
+            <div class="col-xs-2 form-label">
+				Last Renewal Date
+            </div>
+			<div class="col-xs-4 teal">
+				$$LAST_RENEWAL_DATE$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+                        
+        <!-- Row start -->
+        <div class="row">
+            
+            <div class="col-xs-2 form-label">
+				CAC Number
+            </div>
+			<div class="col-xs-4 teal">
+				$$CAC_NUMBER$$
+            </div>
+            
+            <div class="col-xs-2 form-label">
+				Registration Date
+            </div>
+			<div class="col-xs-4 teal">
+				$$REGISTRATION_DATE$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+                
+        <div class="row">
+            <div class="col-xs-12 blue">
+				<h4 class="white-text">A. Proprietor Details</h4>
+            </div>
+        </div>
+                
+        <!-- Row start -->
+        <div class="row">
+            
+            <div class="col-xs-2 form-label">
+				Name
+            </div>
+			<div class="col-xs-4 teal">
+				$$PROPRIETOR_NAME$$
+            </div>
+            
+            <div class="col-xs-2 form-label">
+				Gender
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$PROPRIETOR_GENDER_MALE$$
+            </div>
+            
+			<div class="col-xs-1">
+				Male
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$PROPRIETOR_GENDER_FEMALE$$
+            </div>
+            
+			<div class="col-xs-1">
+				Female
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+                
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-2 form-label">
+				NIN Number
+            </div>
+			<div class="col-xs-2 teal">
+				$$PROPRIETOR_NIN_NUMBER$$
+            </div>
+            
+            <div class="col-xs-2 form-label">
+				Mobile 1
+            </div>
+			<div class="col-xs-2 teal">
+				$$PROPRIETOR_MOBILE1$$
+            </div>
+            
+            <div class="col-xs-2 form-label">
+				Mobile 2
+            </div>
+			<div class="col-xs-2 teal">
+				$$PROPRIETOR_MOBILE2$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+            
+            <div class="col-xs-2 form-label">
+				Email
+            </div>
+            
+			<div class="col-xs-4 teal">
+				$$PROPRIETOR_EMAIL$$
+            </div>
+        
+            <div class="col-xs-2 form-label">
+				Is Medical Director
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$PROPRIETOR_IS_MD_NO$$
+            </div>
+            
+			<div class="col-xs-1">
+				No
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$PROPRIETOR_IS_MD_YES$$
+            </div>
+            
+			<div class="col-xs-1">
+				Yes
+            </div>
+            
+            <div class="col-xs-1 medium">
+				
+            </div>
+                            
+        </div>
+        <!-- /Row end -->
+        
+        <div class="row">
+            <div class="col-xs-12 blue">
+				<h4 class="white-text">B. Medical Director Details (if applicable)</h4>
+            </div>
+        </div>
+        
+        <!-- Row start -->
+        <div class="row">
+            
+            <div class="col-xs-2 form-label">
+				Name
+            </div>
+			<div class="col-xs-4 teal">
+				$$MD_NAME$$
+            </div>
+            
+            <div class="col-xs-2 form-label">
+				Gender
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$MD_GENDER_MALE$$
+            </div>
+            
+			<div class="col-xs-1">
+				Male
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$MD_GENDER_FEMALE$$
+            </div>
+            
+			<div class="col-xs-1">
+				Female
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-2 form-label">
+				NIN Number
+            </div>
+			<div class="col-xs-2 teal">
+				$$MD_NIN_NUMBER$$
+            </div>
+            
+            <div class="col-xs-2 form-label">
+				Mobile 1
+            </div>
+			<div class="col-xs-2 teal">
+				$$MD_MOBILE1$$
+            </div>
+            
+            <div class="col-xs-2 form-label">
+				Mobile 2
+            </div>
+			<div class="col-xs-2 teal">
+				$$MD_MOBILE2$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+            
+            <div class="col-xs-2 form-label">
+				Email
+            </div>
+			<div class="col-xs-4 teal">
+				$$MD_EMAIL$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <div class="row">
+            <div class="col-xs-12 blue">
+				<h4 class="white-text">C. Establishment Details</h4>
+            </div>
+        </div>
+        
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-2 form-label">
+				Name of Establishment
+            </div>
+			<div class="col-xs-10 teal">
+				$$ESTABLISHMENT_NAME$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-2 form-label">
+				Type of Establishment
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$ESTABLISHMENT_TYPE_HOSPITAL$$
+            </div>
+            
+			<div class="col-xs-1">
+				Hospital
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$ESTABLISHMENT_TYPE_CLINIC$$
+            </div>
+            
+			<div class="col-xs-1">
+				Clinic
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$ESTABLISHMENT_TYPE_LABARATORY$$
+            </div>
+            
+			<div class="col-xs-1 medium">
+				Laboratory
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$ESTABLISHMENT_TYPE_MATERNITY$$
+            </div>
+            
+			<div class="col-xs-1 medium">
+				Maternity
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot>
+				$$ESTABLISHMENT_TYPE_PHYSIOTHERAPY$$
+            </div>
+            
+			<div class="col-xs-1 medium">
+				Physiotherapy
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$ESTABLISHMENT_TYPE_RADIODIAGNOSTIC$$
+            </div>
+            
+			<div class="col-xs-1 medium">
+				Radiodiagnostic
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-2 form-label">
+				
+            </div>
+			<div class="col-xs-10 teal tiny">
+				$$ESTABLISHMENT_TYPE_OTHER$$
+            </div>
+            
+			<div class="col-xs-3">
+				Other, please specify:
+            </div>
+            
+			<div class="col-xs-2 teal filler">
+				$$ESTABLISHMENT_TYPE_OTHER_NAME$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-2 form-label">
+				Address
+            </div>
+			<div class="col-xs-10 teal">
+				$$ESTABLISHMENT_ADDRESS$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-2 form-label">
+				LGA
+            </div>
+			<div class="col-xs-2 teal">
+				$$ESTABLISHMENT_LGA$$
+            </div>
+            
+            <div class="col-xs-2 form-label">
+				Land Mark
+            </div>
+			<div class="col-xs-2 teal">
+				$$ESTABLISHMENT_LANDMARK$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-2 form-label">
+				Numbers of Staff
+            </div>
+            
+			<div class="col-xs-10 teal">
+				$$STAFFING_PROFILE$$
+            </div>
+                        
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-2 form-label">
+				Services
+            </div>
+            
+			<div class="col-xs-10 teal">
+				$$SERVICES$$
+            </div>
+                        
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+            
+            <div class="col-xs-3 form-label">
+				Administrator Name
+            </div>
+			<div class="col-xs-3 teal">
+				$$ADMIN_NAME$$
+            </div>
+                        
+        </div>
+        <!-- /Row end -->
+
+        <!-- Row start -->
+        <div class="row">
+            
+            <div class="col-xs-3 form-label">
+				Administrator Mobile 1
+            </div>
+			<div class="col-xs-3 teal">
+				$$ADMIN_MOBILE1$$
+            </div>
+            
+            <div class="col-xs-3 form-label">
+				Administrator Mobile 2
+            </div>
+			<div class="col-xs-3 teal">
+				$$ADMIN_MOBILE2$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <div class="row">
+            <div class="col-xs-12 blue">
+				<h4 class="white-text">D. Professional Body Details</h4>
+            </div>
+        </div>
+        
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-4 form-label">
+				Attendance to Professional Development
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$PBODY_ATT_20$$
+            </div>
+            
+			<div class="col-xs-2">
+				20 Units
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$PBODY_ATT_LESS20$$
+            </div>
+            
+			<div class="col-xs-2">
+				Less than 20 Units
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$PBODY_ATT_NOTATALL$$
+            </div>
+            
+			<div class="col-xs-1 medium">
+				Not at all
+            </div>
+                        
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-4 form-label">
+				Involvment in Professional Body Activities
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$PBODY_INVOLVE_REGULAR$$
+            </div>
+            
+			<div class="col-xs-2">
+				Regular
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$PBODY_INVOLVE_IRREGULAR$$
+            </div>
+            
+			<div class="col-xs-2">
+				Irregular
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$PBODY_INVOLVE_NOT$$
+            </div>
+            
+			<div class="col-xs-1 medium">
+				Not Involved
+            </div>
+                        
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+            
+            <div class="col-xs-2 form-label">
+				Name
+            </div>
+			<div class="col-xs-4 teal">
+				$$PBODY_NAME$$
+            </div>
+            
+            <div class="col-xs-2 form-label">
+				Position
+            </div>
+			<div class="col-xs-4 teal">
+				$$PBODY_POSITION$$
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <!-- Row start -->
+        <div class="row">
+            
+            <div class="col-xs-2 form-label">
+				Signature
+            </div>
+			<div class="col-xs-4 teal">
+				&nbsp;
+            </div>
+            
+            <div class="col-xs-2 form-label">
+				Signature Date
+            </div>
+			<div class="col-xs-4 teal">
+				&nbsp;
+            </div>
+            
+        </div>
+        <!-- /Row end -->
+        
+        <div class="row">
+        
+            <div class="col-xs-4 form-label">
+				Remarks by Head of Professional Body
+            </div>
+            
+			<div class="col-xs-8 teal">
+				$$PBODY_REMARKS$$
+            </div>
+        
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 blue">
+				<h4 class="white-text">E. Acceptance Details</h4>
+            </div>
+        </div>
+        
+        <!-- Row start -->
+        <div class="row">
+        
+            <div class="col-xs-3 form-label">
+				Applicant Accepted?
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$ACCEPTANCE_NO$$
+            </div>
+            
+			<div class="col-xs-1">
+				No
+            </div>
+            
+			<div class="col-xs-1 teal tiny ballot">
+				$$ACCEPTANCE_YES$$
+            </div>
+            
+			<div class="col-xs-1">
+				Yes
+            </div>
+                                    
+        </div>
+        <!-- /Row end -->
+        
+        <div class="row">
+        
+            <div class="col-xs-3 form-label">
+				Reason for non Acceptance
+            </div>
+            
+			<div class="col-xs-9 teal">
+				$$ACCEPTANCE_REASON$$
+            </div>
+        
+        </div>
+		
+    </div><!-- /Container -->
+    
+    <script src=""></script>
+    
+</body>
+</html>

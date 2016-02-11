@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3D622201-7C5E-4AB0-BF91-D4FC678F67BD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>healthsystems.fct.data</RootNamespace>
+    <AssemblyName>healthsystems.fct.data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\NHibernateHelper.cs" />
+    <Compile Include="DataClasses\Category.cs" />
+    <Compile Include="DataClasses\Costing.cs" />
+    <Compile Include="DataClasses\Location.cs" />
+    <Compile Include="DataClasses\Payment.cs" />
+    <Compile Include="DataClasses\PaymentType.cs" />
+    <Compile Include="DataClasses\Permission.cs" />
+    <Compile Include="DataClasses\Registration.cs" />
+    <Compile Include="DataClasses\RegistrationService.cs" />
+    <Compile Include="DataClasses\RegistrationStaffing.cs" />
+    <Compile Include="DataClasses\Renewal.cs" />
+    <Compile Include="DataClasses\RenewalType.cs" />
+    <Compile Include="DataClasses\Role.cs" />
+    <Compile Include="DataClasses\Service.cs" />
+    <Compile Include="DataClasses\Setting.cs" />
+    <Compile Include="DataClasses\Staffing.cs" />
+    <Compile Include="DataClasses\State.cs" />
+    <Compile Include="DataClasses\Transaction.cs" />
+    <Compile Include="DataClasses\TransactionType.cs" />
+    <Compile Include="DataClasses\User.cs" />
+    <Compile Include="DataMappings\CategoryMap.cs" />
+    <Compile Include="DataMappings\CostingMap.cs" />
+    <Compile Include="DataMappings\LocationMap.cs" />
+    <Compile Include="DataMappings\PaymentMap.cs" />
+    <Compile Include="DataMappings\PaymentTypeMap.cs" />
+    <Compile Include="DataMappings\PermissionMap.cs" />
+    <Compile Include="DataMappings\RegistrationMap.cs" />
+    <Compile Include="DataMappings\RegistrationServiceMap.cs" />
+    <Compile Include="DataMappings\RegistrationStaffingMap.cs" />
+    <Compile Include="DataMappings\RenewalMap.cs" />
+    <Compile Include="DataMappings\RenewalTypeMap.cs" />
+    <Compile Include="DataMappings\RoleMap.cs" />
+    <Compile Include="DataMappings\ServiceMap.cs" />
+    <Compile Include="DataMappings\SettingMap.cs" />
+    <Compile Include="DataMappings\StaffingMap.cs" />
+    <Compile Include="DataMappings\StateMap.cs" />
+    <Compile Include="DataMappings\TransactionMap.cs" />
+    <Compile Include="DataMappings\TransactionTypeMap.cs" />
+    <Compile Include="DataMappings\UserMap.cs" />
+    <Compile Include="DataClasses\RolePermission.cs" />
+    <Compile Include="DataMappings\RolePermissionMap.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="DataClasses\" />
+    <Folder Include="DataMappings\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

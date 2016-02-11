@@ -1,0 +1,230 @@
+body > div.container {
+    padding-top: 60px;
+}
+
+.dashboard-content div {
+    text-align: center;
+}
+
+.fa-4 {
+    font-size: 4em;
+}
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before { 
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.form-group.required .control-label:after {
+    content: "*";
+    color: red;
+}
+
+.form-group .has-feedback i {
+    margin-top: 10px;
+}
+
+i.required, i.red {
+    color: red;
+}
+
+.modal-content {
+    -webkit-border-radius: 0;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 0;
+    -moz-background-clip: padding;
+    border-radius: 6px;
+    background-clip: padding-box;
+    -webkit-box-shadow: 0 0 40px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0 40px rgba(0,0,0,.5);
+    box-shadow: 0 0 40px rgba(0,0,0,.5);
+    color: #000;
+    background-color: #fff;
+    border: rgba(0,0,0,0);
+}
+
+.modal-message .modal-dialog {
+    width: 300px;
+}
+
+.modal-message .modal-body, .modal-message .modal-footer, .modal-message .modal-header, .modal-message .modal-title {
+    background: 0 0;
+    border: none;
+    margin: 0;
+    padding: 0 20px;
+    text-align: center !important;
+}
+
+.modal-message .modal-title {
+    font-size: 17px;
+    color: #737373;
+    margin-bottom: 3px;
+}
+
+.modal-message .modal-body {
+    color: #737373;
+}
+
+.modal-message .modal-header {
+    color: #fff;
+    margin-bottom: 10px;
+    padding: 15px 0 8px;
+}
+
+    .modal-message .modal-header .fa,
+    .modal-message .modal-header .glyphicon, .modal-message .modal-header .typcn, .modal-message .modal-header .wi {
+        font-size: 30px;
+    }
+
+.modal-message .modal-footer {
+    margin: 25px 0 20px;
+    padding-bottom: 10px;
+}
+
+.modal-backdrop.in {
+    zoom: 1;
+    filter: alpha(opacity=75);
+    -webkit-opacity: .75;
+    -moz-opacity: .75;
+    opacity: .75;
+}
+
+.modal-backdrop {
+    /*background-color: #fff;*/
+}
+
+.modal-message.modal-success .modal-header {
+    color: #53a93f;
+    border-bottom: 3px solid #a0d468;
+}
+
+.modal-message.modal-info .modal-header {
+    color: #57b5e3;
+    border-bottom: 3px solid #57b5e3;
+}
+
+.modal-message.modal-danger .modal-header {
+    color: #d73d32;
+    border-bottom: 3px solid #e46f61;
+}
+
+.modal-message.modal-warning .modal-header {
+    color: #f4b400;
+    border-bottom: 3px solid #ffce55;
+}
+
+.left {
+    text-align: left !important;
+}
+
+.right {
+    text-align: right !important;
+}
+
+.hidden {
+    visibility: hidden;
+    /*display: none !important;*/
+}
+
+/* navbar background */
+.navbar-inverse {
+    background-color: #008751;
+}
+
+.navbar-brand {
+    color: #fff !important;
+}
+
+.nav.navbar-nav a:hover {
+    background-color: #5cb85c !important;
+}
+
+ul.nav.navbar-nav > li > a {
+    color: #fff !important;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #5cb85c !important;
+}
+
+.dropdown-menu > li > a:hover {
+    color: #fff !important;
+}
+
+.page-header {
+    padding-bottom: 15px;
+}
+
+.center {
+	text-align: center;
+}
+
+.green {
+	color: green;
+}
+
+.red {
+	color: #a94442
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 40px;
+    background-color: lightgrey;
+}
+
+.footer .container {
+    padding-top: 5px;
+}
+
+.paperAndBorder {
+    background-image: url(../img/lightpaperfibers.png);
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    -webkit-box-shadow: 1px 1px 1.5px 0 #888;
+    -ms-box-shadow: 1px 1px 1.5px 0 #888;
+    box-shadow: 1px 1px 1.5px 0 #888;
+}

@@ -1,0 +1,46 @@
+﻿<div class="container">
+    <div class="page-header">
+        <h1>
+            <a ui-sref="masterfiles">Masterfiles</a>
+            &gt;
+            User
+        </h1>
+    </div>
+	
+	<a class="btn btn-success" ui-sref="user-create">
+		<i class="fa fa-plus"></i>
+		Add User
+	</a>
+	
+	<p>&nbsp;</p>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Date Created</th>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="item in dataList">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{item.Created | moment: 'format': 'DD/MM/YYYY'}}</td>
+                <td>{{item.Username}}</td>
+                <td>{{item.FirstName}}</td>
+                <td>{{item.LastName}}</td>
+                <td>{{item.Mobile}}</td>
+                <td>{{item.EmailAddress}}</td>
+                <td>
+                    <a class="" ui-sref="user-edit({ id : item.Id})"><i class="glyphicon glyphicon-indent-left"></i> Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div><!-- /.container -->

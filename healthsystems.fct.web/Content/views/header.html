@@ -1,0 +1,39 @@
+﻿<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="dashboard">
+                PHERM Management System {{IsLoggedIn}}
+                <small>{{StateName}}</small>
+            </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="dashboard">Home</a></li>
+                <li class="dropdown" ng-if="IsLoggedIn">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="registration"><i class="fa fa-file-text-o fa-lg"></i> &nbsp; New Establishment Registration</a></li>
+                        <li><a ui-sref="search"><i class="fa fa-search fa-lg"></i> &nbsp; Search for Registrations</a></li>
+                        <li><a ui-sref="payments"><i class="fa fa-money fa-lg"></i> &nbsp; Payments</a></li>
+                        <li><a ui-sref="masterfiles"><i class="fa fa-wrench fa-lg"></i> &nbsp; Manage masterfiles</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-if="IsLoggedIn">
+                <li><a href="#" data-toggle="modal" data-target="#myModal"></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user fa-lg"></i> &nbsp; My account <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ui-sref="logout"><i class="fa fa-sign-out fa-lg"></i> &nbsp; Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
