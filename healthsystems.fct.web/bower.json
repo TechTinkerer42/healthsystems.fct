@@ -26,6 +26,7 @@
     "jquery.inputmask": "~3.2.0",
     "underscore": "~1.8.3",
     "toastr": "~2.1.2",
-    "angular-ladda": "~0.3.1"
+    "angular-ladda": "~0.3.1",
+    "ag-grid": "^3.3.3"
   }
 }

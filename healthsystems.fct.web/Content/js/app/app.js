@@ -92,8 +92,7 @@ var app = angular.module("fct",
 [
     "ui.router",
     "angular-ladda",
-    "ngResource",
-    "agGrid"
+    "ngResource"
 
 ],
 function config($httpProvider) {

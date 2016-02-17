@@ -8,6 +8,7 @@
     $scope.Registration = {};
     $scope.Registration.Renewal = false;
     $scope.Id = $stateParams.id != null ? $stateParams.id : 0;
+    $scope.siteRoot = API_URL; 
 
     $scope.Registration.AddressLine1 = "";
     $scope.Registration.AddressLine2 = "";
