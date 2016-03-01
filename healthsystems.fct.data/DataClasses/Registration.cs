@@ -59,7 +59,7 @@ namespace healthsystems.fct.data
         [DataMember]
         public virtual string EstablishmentName { get; set; }
         [DataMember]
-        public virtual string EstablishmentType { get; set; }
+        public virtual IList<TypeOfEstablishment> TypeOfEstablishment { get; set; }
         [DataMember]
         public virtual int NoOfBeds { get; set; }
         [DataMember]
@@ -84,6 +84,8 @@ namespace healthsystems.fct.data
         public virtual IList<RegistrationService> RegistrationServices { get; set; }
         [DataMember]
         public virtual IList<Renewal> Renewals { get; set; }
+		[DataMember]
+		public virtual ProfessionalBody ProfessionalBody { get; set; }
         [DataMember]
         public virtual string ProfessionalBodyAttendance { get; set; }
         [DataMember]

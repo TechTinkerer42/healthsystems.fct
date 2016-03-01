@@ -80,14 +80,14 @@ namespace healthsystems.fct.web
 
 						// Establishment details
 						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_NAME$$", r.EstablishmentName);
-						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_HOSPITAL$$", r.EstablishmentType.Equals("Hospital") ? "X" : "");
-						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_CLINIC$$", r.EstablishmentType.Equals("Clinic") ? "X" : "");
-						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_LABARATORY$$", r.EstablishmentType.Equals("Laboratory") ? "X" : "");
-						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_MATERNITY$$", r.EstablishmentType.Equals("Marernity") ? "X" : "");
-						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_PHYSIOTHERAPY$$", r.EstablishmentType.Equals("Physiotherapy") ? "X" : "");
-						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_RADIODIAGNOSTIC$$", r.EstablishmentType.Equals("Radiodiagnostic") ? "X" : "");
-						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_OTHER$$", r.EstablishmentType.Equals("Other") ? "X" : "");
-						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_OTHER_NAME$$", r.EstablishmentType.Equals("Hospital") ? "X" : "");
+						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_HOSPITAL$$", r.TypeOfEstablishment.Equals("Hospital") ? "X" : "");
+						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_CLINIC$$", r.TypeOfEstablishment.Equals("Clinic") ? "X" : "");
+						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_LABARATORY$$", r.TypeOfEstablishment.Equals("Laboratory") ? "X" : "");
+						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_MATERNITY$$", r.TypeOfEstablishment.Equals("Marernity") ? "X" : "");
+						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_PHYSIOTHERAPY$$", r.TypeOfEstablishment.Equals("Physiotherapy") ? "X" : "");
+						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_RADIODIAGNOSTIC$$", r.TypeOfEstablishment.Equals("Radiodiagnostic") ? "X" : "");
+						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_OTHER$$", r.TypeOfEstablishment.Equals("Other") ? "X" : "");
+						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_TYPE_OTHER_NAME$$", r.TypeOfEstablishment.Equals("Hospital") ? "X" : "");
 
 						// Establishment address
 						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_ADDRESS$$", string.Concat(r.AddressLine1, " ", r.AddressLine2));

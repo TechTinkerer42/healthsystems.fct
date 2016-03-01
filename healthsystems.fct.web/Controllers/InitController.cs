@@ -220,10 +220,10 @@ namespace healthsystems.fct.web.Controllers
 					session.SaveOrUpdate(service04);
 
 					// add staffings
-					var staffings01 = new Staffing { Name = "Doctors" };
-					var staffings02 = new Staffing { Name = "Pharmacists" };
-					var staffings03 = new Staffing { Name = "Nurses" };
-					var staffings04 = new Staffing { Name = "Lab Scientists" };
+					var staffings01 = new Staffing { Name = "Medical Doctor" };
+					var staffings02 = new Staffing { Name = "Nurse" };
+					var staffings03 = new Staffing { Name = "Medical Lab Assistant" };
+					var staffings04 = new Staffing { Name = "Pharmacist" };
 
 					session.SaveOrUpdate(staffings01);
 					session.SaveOrUpdate(staffings02);
@@ -236,6 +236,22 @@ namespace healthsystems.fct.web.Controllers
 
 					var locations = new List<Location>(session.CreateCriteria(typeof(Location)).List<Location>());
 					var location = locations.FirstOrDefault(x => x.State.Id == 1);
+
+					var estType = new TypeOfEstablishment ();
+					estType.Name = "Hospital";
+
+					estType.AddStaff (staffings01);
+					estType.AddStaff (staffings02);
+					estType.AddStaff (staffings03);
+					estType.AddStaff (staffings04);
+
+					session.Save (estType);
+
+					var body = new ProfessionalBody ();
+					body.Name = "MEDICAL AND DENTAL COUNCIL OF NIGERIA (MDCN)";
+					session.Save (body);
+
+					//Staffing
 
 					var registration = new Registration
 					{
@@ -251,7 +267,6 @@ namespace healthsystems.fct.web.Controllers
 						AddressLine1 = "",
 						AddressLine2 = "",
 						MedicalDirectorEmailAddress = "",
-						EstablishmentType = "",
 						AcceptanceDetailsReason = "",
 						ProprietorGender = "",
 						ProprietorFirstName = "",
@@ -287,10 +302,12 @@ namespace healthsystems.fct.web.Controllers
 						ProprietorMobile2 = "",
 						ReferenceNumber = "",
 						RegistrationCosts = 0,
-						//Renewals = null,
-						//Services = null,
-						//Staffings = null
+
+						TypeOfEstablishment = new List<TypeOfEstablishment>(),
+						ProfessionalBody = body
 					};
+
+                    registration.TypeOfEstablishment.Add(estType);
 
 					// add services
 					var services = new List<Service>(session.CreateCriteria(typeof(Service)).List<Service>());
@@ -392,7 +409,7 @@ namespace healthsystems.fct.web.Controllers
 					session.SaveOrUpdate(user01);
 					session.SaveOrUpdate(user02);
 
-					//session.SaveOrUpdate(registration);
+					session.SaveOrUpdate(registration);
 					//session.SaveOrUpdate(renewal);
 					//session.SaveOrUpdate(newTransaction);
 

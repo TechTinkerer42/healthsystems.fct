@@ -35,7 +35,11 @@ namespace healthsystems.fct.data
             Map(x => x.AdministratorMobile2);
 
             Map(x => x.EstablishmentName);
-            Map(x => x.EstablishmentType);
+            
+            HasManyToMany(x => x.TypeOfEstablishment)
+                .Cascade.All()
+                .Table("RegistrationTypeOfEstablishment");
+
             Map(x => x.NoOfBeds);
             Map(x => x.AddressLine1);
             Map(x => x.AddressLine2);
@@ -46,11 +50,7 @@ namespace healthsystems.fct.data
 
             Map(x => x.Latitude);
             Map(x => x.Longitude);
-
-            HasMany(x => x.RegistrationStaffing)
-              .Inverse()
-              .Cascade.All();
-
+            
             HasMany(x => x.RegistrationServices)
               .Inverse()
               .Cascade.All();
@@ -59,6 +59,7 @@ namespace healthsystems.fct.data
               .Inverse()
               .Cascade.All();
 
+			References(x => x.ProfessionalBody);
             Map(x => x.ProfessionalBodyAttendance);
             Map(x => x.ProfessionalBodyInvolvement);
             Map(x => x.ProfessionalBodyRemarks);

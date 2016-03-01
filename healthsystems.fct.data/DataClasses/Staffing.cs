@@ -14,5 +14,9 @@ namespace healthsystems.fct.data
         public virtual string Name { get; set; }
         [DataMember]
         public virtual string Description { get; set; }
+        [DataMember]
+        public virtual int NumberOfStaff { get; set; }
+		[DataMember]
+		public virtual TypeOfEstablishment TypeOfEstablishment { get; set; }
     }
 }

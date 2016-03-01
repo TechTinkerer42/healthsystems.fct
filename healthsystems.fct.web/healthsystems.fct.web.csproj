@@ -131,7 +131,6 @@
   <ItemGroup>
     <Reference Include="Microsoft.Web.Infrastructure">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1348,6 +1347,15 @@
     <Content Include="Content\js\factories\masterfiles\CategoryFactory.js" />
     <Content Include="Content\js\factories\masterfiles\LocationFactory.js" />
     <Content Include="Content\js\factories\ApiFactory.js" />
+    <Content Include="Views\Training\Index.cshtml" />
+    <Content Include="Content\views\masterfiles\typeofestablishment\index.html" />
+    <Content Include="Content\views\masterfiles\typeofestablishment\manage.html" />
+    <Content Include="Content\js\controllers\masterfiles\typeofestablishment\TypeOfEstablishmentController.js" />
+    <Content Include="Content\js\controllers\masterfiles\typeofestablishment\TypeOfEstablishmentManageController.js" />
+    <Content Include="Content\views\masterfiles\professionalbody\index.html" />
+    <Content Include="Content\views\masterfiles\professionalbody\manage.html" />
+    <Content Include="Content\js\controllers\masterfiles\professionalbody\ProfessionalBodyController.js" />
+    <Content Include="Content\js\controllers\masterfiles\professionalbody\ProfessionalBodyManageController.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -1385,6 +1393,9 @@
     <Compile Include="Controllers\Apis\PermissionsOfRoleController.cs" />
     <Compile Include="Models\PermissionsOfRole.cs" />
     <Compile Include="Controllers\Apis\RolePermissionController.cs" />
+    <Compile Include="Controllers\TrainingController.cs" />
+    <Compile Include="Controllers\Apis\TypeOfEstablishmentController.cs" />
+    <Compile Include="Controllers\Apis\ProfessionalBodyController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1633,6 +1644,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bower_components\ag-grid\docs\forum\" />
+    <Folder Include="Content\views\masterfiles\typeofestablishment\" />
+    <Folder Include="Content\js\controllers\masterfiles\typeofestablishment\" />
+    <Folder Include="Content\views\masterfiles\professionalbody\" />
+    <Folder Include="Content\js\controllers\masterfiles\professionalbody\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

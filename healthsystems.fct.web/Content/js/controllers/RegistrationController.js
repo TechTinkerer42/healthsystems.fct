@@ -1,4 +1,4 @@
-﻿app.controller("RegistrationController", function ($scope, $http, RegistrationFactory, CategoryFactory, LocationFactory, API_URL, $stateParams, LocationMapResource, StringFactory) {
+﻿app.controller("RegistrationController", function ($scope, $http, RegistrationFactory, CategoryFactory, LocationFactory, API_URL, $stateParams, LocationMapResource, StringFactory, ApiFactory) {
 
     $scope.IsSaving = false;
     $scope.SaveButtonText = "Save Registration";
@@ -23,6 +23,16 @@
         $scope.stateLocations = response.data;
     }, handleError);
 
+    // Collect Type of Establishments
+    ApiFactory.get("TypeOfEstablishment").then(function success(response) {
+        $scope.typeOfEstablishments = response;
+    }, handleError);
+
+    // Collect Professional Bodies
+    ApiFactory.get("ProfessionalBody").then(function success(response) {
+        $scope.professionalBodies = response;
+    }, handleError);
+
     if ($scope.Id > 0) {
 
         $scope.allowPrint = true;
@@ -37,8 +47,7 @@
 	RegistrationFactory.get($scope.Id).then(function success(response) {
 
 		// Collect data
-		$scope.Registration = response.data;
-
+	    $scope.Registration = response.data;
 		// Repair date format - for ui
 		$scope.Registration.RegistrationDate = moment($scope.Registration.RegistrationDate, moment.ISO_8601).format('DD/MM/YYYY');
 		if($scope.Registration.RegistrationDate === "01/01/0001"){

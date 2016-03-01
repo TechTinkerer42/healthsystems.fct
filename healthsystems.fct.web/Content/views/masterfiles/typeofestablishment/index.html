@@ -1,0 +1,38 @@
+﻿<div class="container">
+    <div class="page-header">
+        <h1>
+			<a ui-sref="masterfiles">Masterfiles</a>
+			&gt;
+			Type Of Establishment
+		</h1>
+    </div>
+	
+	<a class="btn btn-success" ui-sref="typeofestablishment-create">
+		<i class="fa fa-plus"></i>
+		Add Type Of Establishment
+	</a>
+	
+	<p>&nbsp;</p>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Description</th>
+				<th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="item in dataList">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{item.Name}}</td>
+                <td>{{item.Description}}</td>
+				<td>
+					<a class="" ui-sref="typeofestablishment-edit({ id: item.Id })" ><i class="glyphicon glyphicon-indent-left"></i> Edit</a>
+				</td>
+            </tr>
+        </tbody>
+    </table>
+	
+</div><!-- /.container -->

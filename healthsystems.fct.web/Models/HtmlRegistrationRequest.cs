@@ -31,7 +31,7 @@ namespace healthsystems.fct.web
 		public virtual string MedicalDirectorEmailAddress { get; set; }
 
 		public virtual string EstablishmentName { get; set; }
-		public virtual string EstablishmentType { get; set; }
+		public virtual string TypeOfEstablishment { get; set; }
 		public virtual int NoOfBeds { get; set; }
 		public virtual string AddressLine1 { get; set; }
 		public virtual string AddressLine2 { get; set; }

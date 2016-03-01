@@ -1,13 +1,25 @@
-﻿app.factory('ApiFactory', function($http, API_URL) {
+﻿app.factory('ApiFactory', function($http, API_URL, $q) {
 	'use strict';
 	return {
 		get: get,
 		post: post
 	};
 	
-	function get(scope, paramId){
-		var searchId = paramId != null ? paramId : "";
-		return $http.get(API_URL + "/Api/" + scope + "/" + searchId);
+	function get(scope, paramId) {
+
+	    var deferred = $q.defer();
+
+	    var searchId = paramId != null ? paramId : "";
+
+	    $http.get(API_URL + "/Api/" + scope + "/" + searchId)
+	        .success(function(data) {
+	            deferred.resolve(data);
+	        })
+	        .error(function(data) {
+	            deferred.reject(data);
+	        });
+
+	    return deferred.promise;
 	}
 
 	function post(scope, model) {

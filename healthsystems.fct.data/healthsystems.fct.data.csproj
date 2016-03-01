@@ -83,6 +83,10 @@
     <Compile Include="DataMappings\UserMap.cs" />
     <Compile Include="DataClasses\RolePermission.cs" />
     <Compile Include="DataMappings\RolePermissionMap.cs" />
+    <Compile Include="DataClasses\ProfessionalBody.cs" />
+    <Compile Include="DataMappings\ProfessionalBodyMap.cs" />
+    <Compile Include="DataClasses\TypeOfEstablishment.cs" />
+    <Compile Include="DataMappings\TypeOfEstablishmentMap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

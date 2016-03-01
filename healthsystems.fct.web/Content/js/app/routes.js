@@ -204,5 +204,37 @@
             url: "/masterfile/user/:id",
             templateUrl: suffix + "/Content/views/masterfiles/user/manage.html",
             controller: "UserManageController"
+        })
+        // **********************************************************************
+        .state("typeofestablishment", {
+            url: "/masterfile/typeofestablishment",
+            templateUrl: suffix + "/Content/views/masterfiles/typeofestablishment/index.html",
+            controller: "TypeOfEstablishmentController"
+        })
+        .state("typeofestablishment-create", {
+            url: "/masterfile/typeofestablishment/create",
+            templateUrl: suffix + "/Content/views/masterfiles/typeofestablishment/manage.html",
+            controller: "TypeOfEstablishmentManageController"
+        })
+        .state("typeofestablishment-edit", {
+            url: "/masterfile/typeofestablishment/:id",
+            templateUrl: suffix + "/Content/views/masterfiles/typeofestablishment/manage.html",
+            controller: "TypeOfEstablishmentManageController"
+        })
+        // **********************************************************************
+        .state("professionalbody", {
+            url: "/masterfile/professionalbody",
+            templateUrl: suffix + "/Content/views/masterfiles/professionalbody/index.html",
+            controller: "ProfessionalBodyController"
+        })
+        .state("professionalbody-create", {
+            url: "/masterfile/professionalbody/create",
+            templateUrl: suffix + "/Content/views/masterfiles/professionalbody/manage.html",
+            controller: "ProfessionalBodyManageController"
+        })
+        .state("professionalbody-edit", {
+            url: "/masterfile/professionalbody/:id",
+            templateUrl: suffix + "/Content/views/masterfiles/professionalbody/manage.html",
+            controller: "ProfessionalBodyManageController"
         });
 });

@@ -274,31 +274,26 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3">Type of establishment:</label>
                             <div class="form-group col-sm-3">
-                                <select class="form-control" data-ng-model="Registration.EstablishmentType" required>
+                                <select class="form-control" ng-model="Registration.TypeOfEstablishment[0]" ng-options="item.Name for item in typeOfEstablishments track by item.Id" required>
                                     <option value=""></option>
-                                    <option value="Hospital">Hospital</option>
-                                    <option value="Clinic">Clinic</option>
-                                    <option value="Laboratory">Laboratory</option>
-                                    <option value="Maternity">Maternity</option>
-                                    <option value="Physiotherapy">Physiotherapy</option>
-                                    <option value="Radiodiagnostic">Radiodiagnostic</option>
-                                    <option value="Other">Other</option>
                                 </select>
                                 <p class="help-block with-errors"></p>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                    <div class="form-group">
 
-                            <label class="control-label col-sm-3">No of Beds:</label>
-                            <div class="form-group col-sm-3">
-                                <input type="text" data-type="number" class="form-control" placeholder="No of Beds" data-ng-model="Registration.NoOfBeds">
-                                <p class="help-block with-errors"></p>
-                            </div>
-
+                        <label class="control-label col-sm-3">No of Beds:</label>
+                        <div class="form-group col-sm-3">
+                            <input type="text" data-type="number" class="form-control" placeholder="No of Beds" data-ng-model="Registration.NoOfBeds">
+                            <p class="help-block with-errors"></p>
                         </div>
 
-                        <div class="form-group">
+                    </div>
+
+                        {{Registration.TypeOfEstablishment | json}}
+
+                    <div class="form-group">
 
                             <label class="control-label col-sm-3">&nbsp;</label>
                             <div class="form-group col-sm-3">
@@ -364,13 +359,13 @@
 
                             <div class="col-sm-6">
 
-                                <h4>Numbers of Staff:</h4>
+                                <h4>Number of Staff:</h4>
                                 <hr />
 
-                                <div class="form-group" ng-repeat="registrationStaffing in Registration.RegistrationStaffing">
-                                    <label class="control-label col-sm-6">{{registrationStaffing.Staffing.Name}}</label>
+                                <div class="form-group" ng-repeat="staff in Registration.TypeOfEstablishment[0].Staffings">
+                                    <label class="control-label col-sm-6">{{staff.Name}} </label>
                                     <div class="form-group col-sm-6">
-                                        <input type="text" data-type="number" class="form-control" data-ng-model="registrationStaffing.NumberOfStaff">
+                                        <input type="text" data-type="number" class="form-control" data-ng-model="staff.NumberOfStaff">
                                     </div>
                                 </div>
 
@@ -439,6 +434,16 @@
                     <div class="form-horizontal" role="form">
 
                         <h4>Professional body details:</h4><hr />
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">Professional Body/Association:</label>
+                            <div class="form-group col-sm-5">
+                                <select class="form-control" ng-model="Registration.ProfessionalBody.Id" ng-options="item.Id as item.Name for item in professionalBodies" required>
+                                    <option value=""></option>
+                                </select>
+                                <p class="help-block with-errors"></p>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="control-label col-sm-5">Attendance to Continuous Professional Development:</label>
