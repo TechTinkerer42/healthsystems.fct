@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="ChromeHTML" />
   <MonoDevelop.Ide.Workbench ActiveDocument="healthsystems.fct.web\Controllers\Apis\RegistrationController.cs">
     <Files>
-      <File FileName="healthsystems.fct.web\Controllers\Apis\RegistrationController.cs" Line="145" Column="3" />
+      <File FileName="healthsystems.fct.web\Controllers\Apis\RegistrationController.cs" Line="133" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

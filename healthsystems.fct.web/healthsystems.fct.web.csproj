@@ -131,6 +131,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Web.Infrastructure">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1644,10 +1645,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bower_components\ag-grid\docs\forum\" />
-    <Folder Include="Content\views\masterfiles\typeofestablishment\" />
-    <Folder Include="Content\js\controllers\masterfiles\typeofestablishment\" />
-    <Folder Include="Content\views\masterfiles\professionalbody\" />
-    <Folder Include="Content\js\controllers\masterfiles\professionalbody\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
