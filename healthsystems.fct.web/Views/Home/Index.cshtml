@@ -56,7 +56,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" ui-sref="dashboard">
-                    Nigerian PHERM System {{IsLoggedIn}}
+                    Nigerian PHERM System
                     <small>{{StateName}}</small>
                 </a>
             </div>
@@ -75,6 +75,16 @@
                     </li>
 
                     <li ng-show="IsLoggedIn"><a ui-sref="location-map" class="navAuth"><i class="fa fa-globe"></i> Map</a></li>
+
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-star"></i> Rating <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="survey"><i class="fa fa-file-text-o fa-lg"></i> &nbsp; Take Survey</a></li>
+                            <li><a ui-sref="ratings"><i class="fa fa-search fa-lg"></i> &nbsp; View Ratings</a></li>
+                        </ul>
+                    </li>
+
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right navAuth">
                     <li><a href="#" data-toggle="modal" data-target="#myModal"></a></li>
@@ -141,6 +151,7 @@
     <script src="@Url.Content(string.Format("~/bower_components/moment/moment.js?v={0}", ts))"></script>
     <script src="@Url.Content(string.Format("~/bower_components/ngmodel-format/src/ngmodel.format.js?v={0}", ts))"></script>
     <script src="@Url.Content(string.Format("~/bower_components/toastr/toastr.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/bower_components/angular-bootstrap/ui-bootstrap-tpls.js?v={0}", ts))"></script>
     <script src="//maps.googleapis.com/maps/api/js"></script>
 
     <!-- app definition and routes -->
@@ -157,6 +168,7 @@
     <script src="@Url.Content(string.Format("~/Content/js/filters/MomentFilter.js?v={0}", ts))"></script>
     <script src="@Url.Content(string.Format("~/Content/js/filters/IifFilter.js?v={0}", ts))"></script>
     <script src="@Url.Content(string.Format("~/Content/js/filters/TotalFilter.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/filters/IsEmptyFilter.js?v={0}", ts))"></script>
 
     <!-- angular factories-->
     <script src="@Url.Content(string.Format("~/Content/js/factories/LoginFactory.js?v={0}", ts))"></script>
@@ -182,6 +194,8 @@
     <script src="@Url.Content(string.Format("~/Content/js/controllers/EnquiryController.js?v={0}", ts))"></script>
     <script src="@Url.Content(string.Format("~/Content/js/controllers/TransactController.js?v={0}", ts))"></script>
     <script src="@Url.Content(string.Format("~/Content/js/controllers/LocationMapController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/SurveyController.js?v={0}", ts))"></script>
+    <script src="@Url.Content(string.Format("~/Content/js/controllers/RatingController.js?v={0}", ts))"></script>
 
     <!-- angular masterfile controllers -->
     <script src="@Url.Content(string.Format("~/Content/js/controllers/masterfiles/category/CategoryController.js?v={0}", ts))"></script>

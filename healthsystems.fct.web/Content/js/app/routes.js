@@ -67,6 +67,18 @@
             templateUrl: suffix + "/Content/views/location-map.html",
             controller: "LocationMapController"
         })
+        // -----------------------------------------------------------------------
+        .state("survey", {
+            url: "/rating/survey",
+            templateUrl: suffix + "/Content/views/survey.html",
+            controller: "SurveyController"
+        })
+        .state("ratings", {
+            url: "/rating/ratings",
+            templateUrl: suffix + "/Content/views/ratings.html",
+            controller: "RatingController"
+        })
+        // -----------------------------------------------------------------------
         .state("masterfiles", {
             url: "/masterfiles",
             templateUrl: suffix + "/Content/views/masterfiles.html",

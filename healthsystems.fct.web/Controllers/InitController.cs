@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using healthsystems.fct.data;
 using healthsystems.fct.common;
 using healthsystems.fct.data.Common;
+using healthsystems.fct.data.DataClasses;
 
 namespace healthsystems.fct.web.Controllers
 {
@@ -303,11 +304,9 @@ namespace healthsystems.fct.web.Controllers
 						ReferenceNumber = "",
 						RegistrationCosts = 0,
 
-						TypeOfEstablishment = new List<TypeOfEstablishment>(),
+						TypeOfEstablishment = estType,
 						ProfessionalBody = body
 					};
-
-                    registration.TypeOfEstablishment.Add(estType);
 
 					// add services
 					var services = new List<Service>(session.CreateCriteria(typeof(Service)).List<Service>());
@@ -324,19 +323,21 @@ namespace healthsystems.fct.web.Controllers
 					}
 
 
+
+
 					// add staffing
-					var staffings = new List<Staffing>(session.CreateCriteria(typeof(Staffing)).List<Staffing>());
-					var staffingsToInsert = staffings.Where(x => x.Id >= 1);
-					foreach (var s in staffingsToInsert)
-					{
-						var rs = new RegistrationStaffing
-						{
-							Registration = registration,
-							Staffing = s,
-							NumberOfStaff = 2
-						};
-						registration.AddRegistrationStaffing(rs);
+					var numbersToAdd = 0;
+					foreach (var s in estType.Staffings) {
+						
+						var rts = new RegistrationTypeOfEstablishmentStaffing ();
+						rts.TypeOfEstablishment = estType;
+						rts.Staffing = s;
+						rts.NumberOfStaff = ++numbersToAdd;
+
+						registration.AddRegistrationTypeOfEstablishmentStaffing (rts);
 					}
+
+
 
 					// insert transactionTypes
 					var renewalType01 = new RenewalType
@@ -412,6 +413,43 @@ namespace healthsystems.fct.web.Controllers
 					session.SaveOrUpdate(registration);
 					//session.SaveOrUpdate(renewal);
 					//session.SaveOrUpdate(newTransaction);
+
+
+                    // *************
+
+                    var q1 = new Question();
+                    q1.Query = "A";
+
+                    var q2 = new Question();
+                    q2.Query = "B";
+
+                    session.SaveOrUpdate(q1);
+                    session.SaveOrUpdate(q2);
+
+                    var survey = new Survey();
+                    survey.Name = "Lyall";
+                    survey.Surname = "van der Linde";
+                    survey.EmailAddress = "lyall@gmail.com";
+                    survey.MobileNumber = "0716541254";
+                    survey.Registration = registration;
+
+                    session.SaveOrUpdate(survey);
+
+                    var surveyQuestion = new SurveyQuestion();
+                    surveyQuestion.Survey = survey;
+                    surveyQuestion.Question = q1.Query;
+                    surveyQuestion.Rating = 4.2;
+
+                    session.SaveOrUpdate(surveyQuestion);
+
+                    surveyQuestion = new SurveyQuestion();
+                    surveyQuestion.Survey = survey;
+                    surveyQuestion.Question = q2.Query;
+                    surveyQuestion.Rating = 5.3;
+
+                    session.SaveOrUpdate(surveyQuestion);
+
+                    // *************
 
 					transaction.Commit();
 				}

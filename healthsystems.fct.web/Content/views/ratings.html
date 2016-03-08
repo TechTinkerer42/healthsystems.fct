@@ -1,0 +1,62 @@
+﻿<div class="container">
+	<div class="col-sm-8"> 
+		<div class="page-header">
+			<span class="h1">View
+				<span class="small">facilities ratings</span>
+			</span>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="page-header">
+			
+			<span class="h1">&nbsp;</span>
+		
+		</div>
+
+	</div>
+	
+    <div class="col-sm-12">
+
+        <form id="myForm" role="form" class="survey-form">
+
+	        <table class="table table-bordered">
+	            <thead>
+	                <tr>
+	                    <th>Facility</th>
+	                    <th>Patient Experience Rating</th>
+	                    <!--<th>Overall Experience Rating</th>-->
+	                </tr>
+	                <tr data-ng-repeat="r in rating">
+	                    <td>{{ r.EstablishmentName }}</td>
+	                    <td>
+	                        <uib-rating ng-model="r.score" max="5" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+	                    </td>
+	                    <!--<td>
+	                        <uib-rating ng-model="r.overallExperienceRating" max="5" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+	                    </td>-->
+	                </tr>
+	            </thead>
+	        </table>
+
+        </form>
+		
+    </div>
+	
+ <!--Success Modal Templates-->
+    <div id="modal-success" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="glyphicon glyphicon-check"></i>
+                </div>
+                <div class="modal-title">Success</div>
+                <div class="modal-body">Registration information was saved successfuly</div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" data-dismiss="modal" data-ng-click="successOKButtonClick();">OK</a>
+                </div>
+            </div> <!-- / .modal-content -->
+        </div> <!-- / .modal-dialog -->
+    </div>
+    <!--End Success Modal Templates-->
+
+</div><!-- /.container -->

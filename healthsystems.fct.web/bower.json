@@ -27,6 +27,7 @@
     "underscore": "~1.8.3",
     "toastr": "~2.1.2",
     "angular-ladda": "~0.3.1",
-    "ag-grid": "^3.3.3"
+    "ag-grid": "^3.3.3",
+    "angular-bootstrap": "^1.2.4"
   }
 }

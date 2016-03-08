@@ -95,6 +95,7 @@ namespace healthsystems.fct.web
 						parsedHtmlContent = Replacement(parsedHtmlContent, "$$ESTABLISHMENT_LANDMARK$$", r.LandMark);
 
 						// Numbers of staff
+						/*
 						var staffing = new StringBuilder();
 						for (var i = 0; i < r.RegistrationStaffing.Count; i++)
 						{
@@ -108,7 +109,7 @@ namespace healthsystems.fct.web
 							}
 						}
 						parsedHtmlContent = Replacement(parsedHtmlContent, "$$STAFFING_PROFILE$$", staffing.ToString());
-
+*/
 						// Services
 						var services = new StringBuilder();
 						for (var i = 0; i < r.RegistrationServices.Count; i++)

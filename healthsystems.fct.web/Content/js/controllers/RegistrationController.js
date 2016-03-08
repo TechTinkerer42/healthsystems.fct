@@ -57,8 +57,6 @@
 		// Category and Location
 		if($scope.Id > 0){
 
-            
-		
 			// Check whether a LastRenewalDate is present
 			if ($scope.Registration.LastRenewalDate != null) {
 				// Repair date format - for ui
@@ -171,8 +169,6 @@
 
         // *************************************************************************************************
 
-
-
     } // save or update function
 
     // watch variables
@@ -187,6 +183,39 @@
 		    }
 		    else {
 		        $scope.successOKButtonClick();
+		    }
+		}
+	);
+
+    $scope.$watchCollection(
+		"Registration.TypeOfEstablishment",
+		function (newValue, oldValue) {
+		    if (newValue == null) return;
+		    if (newValue) {
+
+		        if ($scope.Registration.Id == 0) {
+
+		            console.log("getting for new list");
+
+		            ApiFactory.get("TypeOfEstablishment", $scope.Registration.TypeOfEstablishment.Id).then(function success(response) {
+		                $scope.currentTypeOfEstablishment = response;
+
+		                // populate staffings
+		                for (var i = 0; i < $scope.currentTypeOfEstablishment.Staffings.length; i++) {
+		                    var rts = {
+		                        Id: 0,
+		                        TypeOfEstablishment: $scope.currentTypeOfEstablishment,
+		                        Staffing: $scope.currentTypeOfEstablishment.Staffings[i],
+		                        NumberOfStaff: 0
+		                    }
+		                    $scope.Registration.RegistrationTypeOfEstablishmentStaffing.push(rts);
+		                }
+
+		            }, handleError);
+
+		        }
+
+
 		    }
 		}
 	);

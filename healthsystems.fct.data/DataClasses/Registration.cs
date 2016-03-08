@@ -59,7 +59,9 @@ namespace healthsystems.fct.data
         [DataMember]
         public virtual string EstablishmentName { get; set; }
         [DataMember]
-        public virtual IList<TypeOfEstablishment> TypeOfEstablishment { get; set; }
+        public virtual TypeOfEstablishment TypeOfEstablishment { get; set; }
+		[DataMember]
+		public virtual IList<RegistrationTypeOfEstablishmentStaffing> RegistrationTypeOfEstablishmentStaffing { get; set; }
         [DataMember]
         public virtual int NoOfBeds { get; set; }
         [DataMember]
@@ -78,8 +80,6 @@ namespace healthsystems.fct.data
         public virtual string Latitude { get; set; }
         [DataMember]
         public virtual string Longitude { get; set; }
-        [DataMember]
-        public virtual IList<RegistrationStaffing> RegistrationStaffing { get; set; }
         [DataMember]
         public virtual IList<RegistrationService> RegistrationServices { get; set; }
         [DataMember]
@@ -121,7 +121,7 @@ namespace healthsystems.fct.data
 
         public Registration()
         {
-            RegistrationStaffing = new List<RegistrationStaffing>();
+			RegistrationTypeOfEstablishmentStaffing = new List<RegistrationTypeOfEstablishmentStaffing>();
             RegistrationServices = new List<RegistrationService>();
             Renewals = new List<Renewal>();
         }
@@ -133,13 +133,13 @@ namespace healthsystems.fct.data
             Renewals.Add(renewal);
         }
 
-        public virtual void AddRegistrationStaffing(RegistrationStaffing registrationStaffing)
-        {
-            registrationStaffing.Registration = this;
-            RegistrationStaffing.Add(registrationStaffing);
-        }
+		public virtual void AddRegistrationTypeOfEstablishmentStaffing(RegistrationTypeOfEstablishmentStaffing registrationTypeOfEstablishmentStaffing)
+		{
+			registrationTypeOfEstablishmentStaffing.Registration = this;
+			RegistrationTypeOfEstablishmentStaffing.Add(registrationTypeOfEstablishmentStaffing);
+		}
 
-        public virtual void AddRegistrationService(RegistrationService registrationService)
+		public virtual void AddRegistrationService(RegistrationService registrationService)
         {
             registrationService.Registration = this;
             RegistrationServices.Add(registrationService);

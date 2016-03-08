@@ -1,0 +1,92 @@
+﻿<div class="container">
+	<div class="col-sm-8"> 
+		<div class="page-header">
+			<span class="h1">Patient
+				<span class="small">experience rating</span>
+			</span>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="page-header">
+			
+			<span class="h1">&nbsp;</span>
+		
+		</div>
+
+	</div>
+	
+    <div class="col-sm-12">
+
+        <form id="myForm" role="form" class="survey-form">
+
+            <div class="row">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Facility:</label>
+                    <div class="form-group col-sm-5">
+                        <select class="form-control" ng-model="survey.RegistrationId" ng-options="item.Id as item.EstablishmentName for item in facilities" required>
+                            <option value=""></option>
+                        </select>
+                        <p class="help-block with-errors"></p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Name:</label>
+                    <div class="form-group col-sm-3">
+                        <input type="text" class="form-control" placeholder="Name" data-ng-model="survey.Name" required>
+                        <p class="help-block with-errors"></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div data-ng-repeat="cat in survey.Categories">
+                <h3>{{cat.Title}}</h3>
+                <div data-ng-repeat="q in cat.Questions">
+
+                    <p class="lead">
+                        {{q.Query}}
+                    </p>
+                    <div class="btn-group btn-group-md">
+                        <label class="btn btn-default" ng-model="q.Rating" uib-uncheckable="uncheckable" uib-btn-radio="'1'">1</label>
+                        <label class="btn btn-default" ng-model="q.Rating" uib-uncheckable="uncheckable" uib-btn-radio="'2'">2</label>
+                        <label class="btn btn-default" ng-model="q.Rating" uib-uncheckable="uncheckable" uib-btn-radio="'3'">3</label>
+                        <label class="btn btn-default" ng-model="q.Rating" uib-uncheckable="uncheckable" uib-btn-radio="'4'">4</label>
+                        <label class="btn btn-default" ng-model="q.Rating" uib-uncheckable="uncheckable" uib-btn-radio="'5'">5</label>
+
+                        &nbsp;
+                        <p ng-show="hasError" class="text-danger">{{q.Rating == 0 ? '* Please choose a number' : ""}}</p>
+                    </div>
+                    <p>
+                        &nbsp;
+
+                    </p>
+
+                </div>
+            </div>
+            <hr />
+            <button type="button" class="btn btn-primary btn-lg" data-ng-click="submitSurvey();">Submit Survey</button>
+
+        </form>
+		
+    </div>
+	
+ <!--Success Modal Templates-->
+    <div id="modal-success" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="glyphicon glyphicon-check"></i>
+                </div>
+                <div class="modal-title">Success</div>
+                <div class="modal-body">Registration information was saved successfuly</div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" data-dismiss="modal" data-ng-click="successOKButtonClick();">OK</a>
+                </div>
+            </div> <!-- / .modal-content -->
+        </div> <!-- / .modal-dialog -->
+    </div>
+    <!--End Success Modal Templates-->
+
+</div><!-- /.container -->

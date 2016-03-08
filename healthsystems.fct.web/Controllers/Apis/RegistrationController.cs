@@ -33,31 +33,7 @@ namespace healthsystems.fct.web
             using (var session = NHibernateHelper.CreateSessionFactory())
             {
                 using (var transaction = session.BeginTransaction())
-                {/*
-                    Registration entity;
-
-                    if (id == 0)
-                    {
-                        entity = new Registration();
-                    }
-                    else
-                    {
-                        // collect objects
-                        var data = new List<Registration>(session.CreateCriteria(typeof(Registration)).List<Registration>());
-
-                        // collect single object
-                        entity = data.FirstOrDefault(x => x.Id == id);
-                    }
-
-                    // trim excess
-                    if (entity != null)
-                    {
-                        //if (entity.State != null) entity.State.Locations = null;
-                    }
-
-                    // return as HttpResponseMessage
-                    return WebApiHelper.ObjectToHttpResponseMessage(entity);*/
-
+                {
                     var registrations = new List<Registration>(session.CreateCriteria(typeof(Registration)).List<Registration>());
 
                     var registration = registrations.FirstOrDefault(x => x.Id == id);
@@ -68,17 +44,7 @@ namespace healthsystems.fct.web
                     if (registration == null)
                     {
                         registration = new Registration();
-
-                        foreach (var staffing in staffings)
-                        {
-                            registration.RegistrationStaffing.Add(new RegistrationStaffing
-                            {
-                                Registration = registration,
-                                NumberOfStaff = 0,
-                                Staffing = staffing
-                            });
-                        }
-
+					
                         foreach (var service in services)
                         {
                             registration.RegistrationServices.Add(new RegistrationService
@@ -92,20 +58,6 @@ namespace healthsystems.fct.web
                     }
                     else
                     {
-                        // Staffing profile
-                        foreach (var staffing in staffings)
-                        {
-                            if (registration.RegistrationStaffing.FirstOrDefault(x => x.Staffing.Id == staffing.Id) == null)
-                            {
-                                var rs = new RegistrationStaffing
-                                {
-                                    Registration = registration,
-                                    Staffing = staffing,
-                                    NumberOfStaff = 0
-                                };
-                                registration.RegistrationStaffing.Add(rs);
-                            }
-                        }
 
                         // Services
                         foreach (var service in services)
@@ -190,7 +142,10 @@ namespace healthsystems.fct.web
 
 
             registration.EstablishmentName = (string)j["EstablishmentName"];
-            registration.TypeOfEstablishment = j["TypeOfEstablishment"].ToObject<List<TypeOfEstablishment>>();
+			registration.TypeOfEstablishment = j["TypeOfEstablishment"].ToObject<TypeOfEstablishment>();
+
+			registration.RegistrationTypeOfEstablishmentStaffing = j["RegistrationTypeOfEstablishmentStaffing"].ToObject<List<RegistrationTypeOfEstablishmentStaffing>>();
+
             registration.NoOfBeds = (int)j["NoOfBeds"];
 
 
@@ -205,7 +160,6 @@ namespace healthsystems.fct.web
             registration.LandMark = j["LandMark"].ToObject<string>();
 
             // Number of Staff
-            registration.RegistrationStaffing = j["RegistrationStaffing"].ToObject<List<RegistrationStaffing>>();
 
             // Services
             registration.RegistrationServices = j["RegistrationServices"].ToObject<List<RegistrationService>>();
@@ -231,12 +185,6 @@ namespace healthsystems.fct.web
 
             registration.Lga = (string) j["Lga"];
             
-            
-
-            
-            
-            
-
             registration.ReferenceNumber = (string) j["ReferenceNumber"];
 
             registration.AmountPaid = (decimal)j["AmountPaid"];
@@ -353,11 +301,10 @@ namespace healthsystems.fct.web
                         registration.EstablishmentName = r.EstablishmentName ?? "";
 
                         registration.TypeOfEstablishment = r.TypeOfEstablishment;
+
                         registration.ProfessionalBody = r.ProfessionalBody;
 
                         registration.NoOfBeds = r.NoOfBeds;
-
-
 
                         registration.AddressLine1 = r.AddressLine1 ?? "";
                         registration.AddressLine2 = r.AddressLine2 ?? "";
@@ -367,29 +314,12 @@ namespace healthsystems.fct.web
                         registration.Longitude = r.Longitude;
 
                         // Add 
-                        foreach (var rs in r.RegistrationStaffing)
+                        foreach (var rs in r.RegistrationTypeOfEstablishmentStaffing)
                         {
-                            var registrationStaffing = registration.RegistrationStaffing.FirstOrDefault(x => x.Staffing.Name == rs.Staffing.Name);
-
-                            if (registrationStaffing != null)
-                            {
-                                registrationStaffing.NumberOfStaff = rs.NumberOfStaff;
-                            }
-                            else
-                            {
-                                var staffToAdd = session.CreateCriteria(typeof(Staffing)).List<Staffing>().FirstOrDefault(x => x.Name == rs.Staffing.Name);
-
-                                var regStaffing = new RegistrationStaffing
-                                {
-                                    Registration = registration,
-                                    Staffing = staffToAdd,
-                                    NumberOfStaff = rs.NumberOfStaff
-                                };
-                                // if not in db, add it
-                                registration.AddRegistrationStaffing(regStaffing);
-                            }
-
+                            rs.Registration = registration;
                         }
+                        registration.RegistrationTypeOfEstablishmentStaffing = r.RegistrationTypeOfEstablishmentStaffing;
+						
 
                         foreach (var rs in r.RegistrationServices)
                         {

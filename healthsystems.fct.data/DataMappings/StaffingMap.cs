@@ -9,7 +9,6 @@ namespace healthsystems.fct.data
             Id(x => x.Id);
             Map(x => x.Name);
             Map(x => x.Description);
-            Map(x => x.NumberOfStaff);
 			References(x => x.TypeOfEstablishment);
         }
     }

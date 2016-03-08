@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -41,6 +41,13 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataClasses\Question.cs" />
+    <Compile Include="DataClasses\Survey.cs" />
+    <Compile Include="DataClasses\SurveyCategory.cs" />
+    <Compile Include="DataClasses\SurveyQuestion.cs" />
+    <Compile Include="DataMappings\QuestionMap.cs" />
+    <Compile Include="DataMappings\SurveyMap.cs" />
+    <Compile Include="DataMappings\SurveyQuestionMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\NHibernateHelper.cs" />
     <Compile Include="DataClasses\Category.cs" />
@@ -87,13 +94,11 @@
     <Compile Include="DataMappings\ProfessionalBodyMap.cs" />
     <Compile Include="DataClasses\TypeOfEstablishment.cs" />
     <Compile Include="DataMappings\TypeOfEstablishmentMap.cs" />
+    <Compile Include="DataClasses\RegistrationTypeOfEstablishmentStaffing.cs" />
+    <Compile Include="DataMappings\RegistrationTypeOfEstablishmentStaffingMap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="DataClasses\" />
-    <Folder Include="DataMappings\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

@@ -36,9 +36,11 @@ namespace healthsystems.fct.data
 
             Map(x => x.EstablishmentName);
             
-            HasManyToMany(x => x.TypeOfEstablishment)
-                .Cascade.All()
-                .Table("RegistrationTypeOfEstablishment");
+			References(x => x.TypeOfEstablishment);
+
+			HasMany(x => x.RegistrationTypeOfEstablishmentStaffing)
+				.Inverse()
+				.Cascade.All();
 
             Map(x => x.NoOfBeds);
             Map(x => x.AddressLine1);

@@ -1,0 +1,13 @@
+﻿select
+	Registration_id RegistrationId,
+	EstablishmentName,
+	COUNT(Question) NumberOfQuestions,
+	SUM(Rating) TotalOfRatings
+from
+	SurveyQuestion
+join
+	Registration
+on
+	SurveyQuestion.Registration_id = Registration.id
+group by
+	Registration_id

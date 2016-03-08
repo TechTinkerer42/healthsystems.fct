@@ -92,7 +92,8 @@ var app = angular.module("fct",
 [
     "ui.router",
     "angular-ladda",
-    "ngResource"
+    "ngResource",
+    "ui.bootstrap"
 
 ],
 function config($httpProvider) {
